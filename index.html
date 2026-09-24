@@ -8,9 +8,6 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet" />
-  
-  <!-- Mermaid.js -->
-  <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
 
   <style>
     :root {
@@ -429,6 +426,234 @@
       font-weight: 600;
     }
 
+    /* ======================================================== */
+    /* 🌟 NATIVE HIGH-AESTHETIC ROADMAP PIPELINE (Zero Syntax Errors) */
+    /* ======================================================== */
+    .roadmap-pipeline {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin: 20px 0;
+      position: relative;
+    }
+
+    @media (min-width: 900px) {
+      .roadmap-pipeline {
+        display: grid;
+        grid-template-columns: repeat(6, 1fr);
+        gap: 10px;
+        align-items: stretch;
+      }
+    }
+
+    @media (max-width: 899px) {
+      .roadmap-pipeline {
+        padding-left: 28px;
+      }
+      .roadmap-pipeline::before {
+        content: "";
+        position: absolute;
+        left: 10px;
+        top: 24px;
+        bottom: 24px;
+        width: 2px;
+        background: linear-gradient(180deg, var(--cyan), var(--primary) 50%, var(--emerald));
+        border-radius: 2px;
+      }
+    }
+
+    .stage-card {
+      background: var(--bg-elevated);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      padding: 14px 12px;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: all 0.2s ease;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .stage-card:hover {
+      transform: translateY(-2px);
+      border-color: var(--border-highlight);
+    }
+
+    @media (max-width: 899px) {
+      .stage-card::before {
+        content: "";
+        position: absolute;
+        left: -24px;
+        top: 20px;
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+        background: var(--bg);
+        border: 2px solid var(--primary);
+        z-index: 2;
+      }
+    }
+
+    .stage-card.start-stage {
+      border-color: rgba(6, 182, 212, 0.4);
+      background: rgba(6, 182, 212, 0.05);
+    }
+
+    @media (max-width: 899px) {
+      .stage-card.start-stage::before {
+        border-color: var(--cyan);
+        background: var(--cyan);
+      }
+    }
+
+    .stage-card.terminal-stage {
+      border-color: rgba(16, 185, 129, 0.5);
+      background: rgba(16, 185, 129, 0.08);
+      box-shadow: 0 0 20px rgba(16, 185, 129, 0.12);
+    }
+
+    @media (max-width: 899px) {
+      .stage-card.terminal-stage::before {
+        border-color: var(--emerald);
+        background: var(--emerald);
+        box-shadow: 0 0 10px var(--emerald);
+      }
+    }
+
+    .stage-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 6px;
+    }
+
+    .stage-badge {
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      font-weight: 700;
+      padding: 2px 6px;
+      border-radius: 4px;
+      background: rgba(255, 255, 255, 0.08);
+      color: var(--text-main);
+    }
+
+    .start-stage .stage-badge { background: rgba(6, 182, 212, 0.2); color: var(--cyan); }
+    .terminal-stage .stage-badge { background: rgba(16, 185, 129, 0.2); color: var(--emerald); }
+
+    .stage-date {
+      font-size: 0.72rem;
+      color: var(--text-faint);
+      font-family: var(--font-mono);
+    }
+
+    .stage-title {
+      font-weight: 700;
+      font-size: 0.88rem;
+      color: var(--text-main);
+      margin-bottom: 4px;
+      line-height: 1.3;
+    }
+
+    .stage-action {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      line-height: 1.4;
+      margin-bottom: 8px;
+    }
+
+    .stage-footer {
+      padding-top: 6px;
+      border-top: 1px dashed var(--border);
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+    }
+
+    .stage-principal-label {
+      font-size: 0.68rem;
+      color: var(--text-faint);
+    }
+
+    .stage-principal-val {
+      font-family: var(--font-mono);
+      font-size: 0.82rem;
+      font-weight: 700;
+      color: var(--text-main);
+    }
+
+    .terminal-stage .stage-principal-val {
+      color: var(--emerald);
+      font-size: 0.95rem;
+    }
+
+    /* ======================================================== */
+    /* 🌟 NATIVE STEPS PIPELINE (Subsidy Flow) */
+    /* ======================================================== */
+    .steps-pipeline {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin: 18px 0;
+    }
+
+    @media (min-width: 800px) {
+      .steps-pipeline {
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+        gap: 12px;
+      }
+    }
+
+    .step-box {
+      background: var(--bg-elevated);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      padding: 14px 12px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: all 0.2s ease;
+      position: relative;
+    }
+
+    .step-box.highlight {
+      border-color: rgba(16, 185, 129, 0.4);
+      background: rgba(16, 185, 129, 0.08);
+      box-shadow: 0 0 20px rgba(16, 185, 129, 0.12);
+    }
+
+    .step-num-pill {
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      font-weight: 700;
+      background: rgba(255, 255, 255, 0.08);
+      color: var(--text-muted);
+      padding: 2px 6px;
+      border-radius: 4px;
+      display: inline-block;
+      margin-bottom: 6px;
+      width: fit-content;
+    }
+
+    .step-box.highlight .step-num-pill {
+      background: var(--emerald);
+      color: #fff;
+    }
+
+    .step-title {
+      font-weight: 700;
+      font-size: 0.9rem;
+      color: var(--text-main);
+      margin-bottom: 4px;
+    }
+
+    .step-desc {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      line-height: 1.45;
+    }
+
     /* Tables & Responsive Cards */
     .table-container {
       width: 100%;
@@ -603,40 +828,6 @@
       }
       .mobile-repayment-list {
         display: flex;
-      }
-    }
-
-    /* Mermaid Wrappers */
-    .mermaid-box {
-      background: var(--bg-elevated);
-      border: 1px solid var(--border);
-      border-radius: var(--radius-md);
-      padding: 16px 10px;
-      margin: 16px 0;
-      overflow-x: auto;
-      text-align: center;
-      -webkit-overflow-scrolling: touch;
-    }
-
-    .mermaid svg {
-      max-width: 100% !important;
-      height: auto !important;
-    }
-
-    /* Responsive Flowcharts (Desktop LR vs Mobile TD) */
-    .chart-desktop {
-      display: block;
-    }
-    .chart-mobile {
-      display: none;
-    }
-
-    @media (max-width: 640px) {
-      .chart-desktop {
-        display: none;
-      }
-      .chart-mobile {
-        display: block;
       }
     }
 
@@ -1016,12 +1207,6 @@
       .mobile-timeline, .mobile-repayment-list {
         display: none !important;
       }
-      .chart-desktop {
-        display: block !important;
-      }
-      .chart-mobile {
-        display: none !important;
-      }
     }
   </style>
 </head>
@@ -1040,11 +1225,11 @@
           <span id="themeIcon">☀️</span> <span id="themeText">模式</span>
         </button>
         <button class="btn-action" onclick="window.print()" title="打印或保存为PDF">
-          🖨️ <span class="hide-mobile">打印/PDF</span>
+          🖨️ <span>打印/PDF</span>
         </button>
         <a href="https://github.com/amasun/n70-car-plan" target="_blank" rel="noreferrer" class="btn-action" title="在 GitHub 查看">
           <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
-          <span class="hide-mobile">GitHub</span>
+          <span>GitHub</span>
         </a>
       </div>
     </header>
@@ -1150,58 +1335,103 @@
 
       <h3>阶段执行与资金全景图</h3>
       
-      <!-- Desktop Wide Chart -->
-      <div class="mermaid-box chart-desktop">
-        <pre class="mermaid">
-flowchart LR
-    T0["<b>T0 · 09.30 交付</b><br>──────────────<br>借款 11.7万 · 付全款<br>大绿本自持无抵押<br><b>本金：¥117,000</b>"]
-    
-    T1["<b>T1 · 2026.10</b><br>──────────────<br>月供 <b>¥3,403</b><br>月薪正常覆盖<br><b>本金：¥113,890</b>"]
+      <!-- 🌟 Native Robust Responsive Pipeline -->
+      <div class="roadmap-pipeline">
+        <!-- T0 -->
+        <div class="stage-card start-stage">
+          <div>
+            <div class="stage-header">
+              <span class="stage-badge">T0 · 交付</span>
+              <span class="stage-date">09.30</span>
+            </div>
+            <div class="stage-title">提款与付全款</div>
+            <div class="stage-action">借款11.7万到账 · 自有出资约13.5万全款结清 · 大绿本自持无抵押</div>
+          </div>
+          <div class="stage-footer">
+            <span class="stage-principal-label">剩余本金</span>
+            <span class="stage-principal-val">¥117,000</span>
+          </div>
+        </div>
 
-    T2["<b>T2 · 2026.11</b><br>──────────────<br>月供 <b>¥3,403</b><br>公积金到账 <b>+2.58万</b><br><b>本金：¥110,772</b>"]
+        <!-- T1 -->
+        <div class="stage-card">
+          <div>
+            <div class="stage-header">
+              <span class="stage-badge">T1 · 第1期</span>
+              <span class="stage-date">2026.10</span>
+            </div>
+            <div class="stage-title">月供 ¥3,403</div>
+            <div class="stage-action">本 3,110 + 息 293<br>正常税后月薪覆盖</div>
+          </div>
+          <div class="stage-footer">
+            <span class="stage-principal-label">剩余本金</span>
+            <span class="stage-principal-val">¥113,890</span>
+          </div>
+        </div>
 
-    T3["<b>T3 · 2026.12</b><br>──────────────<br>月供 <b>¥3,403</b><br>月薪覆盖 · 定投照常<br><b>本金：¥107,646</b>"]
+        <!-- T2 -->
+        <div class="stage-card">
+          <div>
+            <div class="stage-header">
+              <span class="stage-badge">T2 · 第2期</span>
+              <span class="stage-date">2026.11</span>
+            </div>
+            <div class="stage-title">月供 ¥3,403</div>
+            <div class="stage-action">公积金到账 <strong>+2.58万</strong><br>现金池大幅回血</div>
+          </div>
+          <div class="stage-footer">
+            <span class="stage-principal-label">剩余本金</span>
+            <span class="stage-principal-val">¥110,772</span>
+          </div>
+        </div>
 
-    T4["<b>T4 · 2027.01</b><br>──────────────<br>月供 <b>¥3,403</b><br>月薪覆盖 · 资金蓄水<br><b>本金：¥104,513</b>"]
+        <!-- T3 -->
+        <div class="stage-card">
+          <div>
+            <div class="stage-header">
+              <span class="stage-badge">T3 · 第3期</span>
+              <span class="stage-date">2026.12</span>
+            </div>
+            <div class="stage-title">月供 ¥3,403</div>
+            <div class="stage-action">月薪结余覆盖<br>¥8,000 指数定投照常扣划</div>
+          </div>
+          <div class="stage-footer">
+            <span class="stage-principal-label">剩余本金</span>
+            <span class="stage-principal-val">¥107,646</span>
+          </div>
+        </div>
 
-    T5["<b>T5 · 2027.02 结清</b><br>──────────────<br>年终奖到账 · 一键还清<br>总利息仅 <b>¥1,385</b><br><b>本金：¥0 (结清)</b>"]
+        <!-- T4 -->
+        <div class="stage-card">
+          <div>
+            <div class="stage-header">
+              <span class="stage-badge">T4 · 第4期</span>
+              <span class="stage-date">2027.01</span>
+            </div>
+            <div class="stage-title">月供 ¥3,403</div>
+            <div class="stage-action">月薪覆盖 · 资金稳步蓄水<br>静待次月年终奖</div>
+          </div>
+          <div class="stage-footer">
+            <span class="stage-principal-label">剩余本金</span>
+            <span class="stage-principal-val">¥104,513</span>
+          </div>
+        </div>
 
-    T0 --> T1 --> T2 --> T3 --> T4 --> T5
-
-    style T0 fill:#1e293b,stroke:#06b6d4,stroke-width:2px,color:#fff
-    style T1 fill:#0f172a,stroke:#475569,stroke-width:1px,color:#fff
-    style T2 fill:#0f172a,stroke:#475569,stroke-width:1px,color:#fff
-    style T3 fill:#0f172a,stroke:#475569,stroke-width:1px,color:#fff
-    style T4 fill:#0f172a,stroke:#475569,stroke-width:1px,color:#fff
-    style T5 fill:#1e293b,stroke:#10b981,stroke-width:2.5px,color:#fff
-        </pre>
-      </div>
-
-      <!-- Mobile Vertical Flowchart -->
-      <div class="mermaid-box chart-mobile">
-        <pre class="mermaid">
-flowchart TD
-    MT0["<b>T0 · 09.30 提车交付</b><br>借款 11.7万 · 纯全款付清<br>大绿本自持无抵押 · <b>本金：¥11.7万</b>"]
-    
-    MT1["<b>T1 · 2026.10 第1期</b><br>月供 <b>¥3,403</b> (本 3110 + 息 293)<br><b>剩余本金：¥113,890</b>"]
-
-    MT2["<b>T2 · 2026.11 第2期</b><br>月供 <b>¥3,403</b> · 公积金到账 <b>+2.58万</b><br><b>剩余本金：¥110,772</b>"]
-
-    MT3["<b>T3 · 2026.12 第3期</b><br>月供 <b>¥3,403</b> · 定投照常<br><b>剩余本金：¥107,646</b>"]
-
-    MT4["<b>T4 · 2027.01 第4期</b><br>月供 <b>¥3,403</b> · 资金稳步蓄水<br><b>剩余本金：¥104,513</b>"]
-
-    MT5["<b>T5 · 2027.02 全额结清</b><br>年终奖到账 · 一键提前结清<br>总利息仅 <b>¥1,385</b> · <b>本金：¥0</b>"]
-
-    MT0 --> MT1 --> MT2 --> MT3 --> MT4 --> MT5
-
-    style MT0 fill:#1e293b,stroke:#06b6d4,stroke-width:2px,color:#fff
-    style MT1 fill:#0f172a,stroke:#475569,stroke-width:1px,color:#fff
-    style MT2 fill:#0f172a,stroke:#475569,stroke-width:1px,color:#fff
-    style MT3 fill:#0f172a,stroke:#475569,stroke-width:1px,color:#fff
-    style MT4 fill:#0f172a,stroke:#475569,stroke-width:1px,color:#fff
-    style MT5 fill:#1e293b,stroke:#10b981,stroke-width:2.5px,color:#fff
-        </pre>
+        <!-- T5 -->
+        <div class="stage-card terminal-stage">
+          <div>
+            <div class="stage-header">
+              <span class="stage-badge">T5 · 结清</span>
+              <span class="stage-date">2027.02</span>
+            </div>
+            <div class="stage-title" style="color: var(--emerald);">全额提前还清</div>
+            <div class="stage-action">年终奖集中到账 · 结清利息 ¥261 · 一键无损还款</div>
+          </div>
+          <div class="stage-footer">
+            <span class="stage-principal-label">结清状态</span>
+            <span class="stage-principal-val">¥0.00 (结清)</span>
+          </div>
+        </div>
       </div>
 
       <h3>还款与结清现金流明细</h3>
@@ -1514,7 +1744,7 @@ flowchart TD
           <div class="custom-checkbox"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg></div>
           <div class="check-card-content">
             <div class="check-card-title">轮胎与轮毂</div>
-            <div class="check-card-desc">四个轮毂边缘无运车蹭伤；核对轮胎品牌规格与选配一致；查验轮胎生产批次 DOT 代码；检查四轮原始胎毛完好，冷态胎压约 2.6~2.9 bar。</div>
+            <div class="check-card-desc">四个轮毂边缘无运车蹭伤；核对轮胎品牌规格与选配一致；查验轮胎生产批次 DOT 代码；检查四轮原始胎毛完好，冷态胎压约 2.6~2.9 bar）。</div>
           </div>
         </div>
       </div>
@@ -1930,52 +2160,47 @@ flowchart TD
 
       <h3>3. 申报步骤与实操路径</h3>
       
-      <!-- Desktop Wide Chart -->
-      <div class="mermaid-box chart-desktop">
-        <pre class="mermaid">
-flowchart LR
-    S1["<b>步骤 1：旧车过户</b><br>──────────────<br>取得二手车销售发票<br>大绿本完成转让变更"]
-    
-    S2["<b>步骤 2：新车上牌</b><br>──────────────<br>9月30日完成交付<br>领取行驶证与大绿本"]
+      <!-- 🌟 Native Robust Steps Pipeline -->
+      <div class="steps-pipeline">
+        <div class="step-box">
+          <div>
+            <span class="step-num-pill">步骤 01</span>
+            <div class="step-title">旧车过户</div>
+            <div class="step-desc">取得二手车销售统一发票，大绿本完成转让变更签章。</div>
+          </div>
+        </div>
 
-    S3["<b>步骤 3：线上申报</b><br>──────────────<br>微信搜索京通小程序<br>进入汽车置换更新系统"]
+        <div class="step-box">
+          <div>
+            <span class="step-num-pill">步骤 02</span>
+            <div class="step-title">新车上牌</div>
+            <div class="step-desc">9月30日完成提车交付，车管所查验领取行驶证与新车大绿本。</div>
+          </div>
+        </div>
 
-    S4["<b>步骤 4：上传材料</b><br>──────────────<br>录入阴学斌证件银行卡<br>上传新旧车双套票证"]
+        <div class="step-box">
+          <div>
+            <span class="step-num-pill">步骤 03</span>
+            <div class="step-title">线上申报</div>
+            <div class="step-desc">微信搜索「京通」小程序，进入市商务局以旧换新专区。</div>
+          </div>
+        </div>
 
-    S5["<b>步骤 5：审核打款</b><br>──────────────<br>商务局审核与公示<br><b>补贴 1.5万 直发到卡</b>"]
+        <div class="step-box">
+          <div>
+            <span class="step-num-pill">步骤 04</span>
+            <div class="step-title">上传材料</div>
+            <div class="step-desc">阴学斌人脸核验，录入借记卡号，上传新旧车双套发票证件照片。</div>
+          </div>
+        </div>
 
-    S1 --> S2 --> S3 --> S4 --> S5
-
-    style S1 fill:#0f172a,stroke:#475569,stroke-width:1px,color:#fff
-    style S2 fill:#0f172a,stroke:#475569,stroke-width:1px,color:#fff
-    style S3 fill:#0f172a,stroke:#06b6d4,stroke-width:1.5px,color:#fff
-    style S4 fill:#0f172a,stroke:#475569,stroke-width:1px,color:#fff
-    style S5 fill:#1e293b,stroke:#10b981,stroke-width:2.5px,color:#fff
-        </pre>
-      </div>
-
-      <!-- Mobile Vertical Chart -->
-      <div class="mermaid-box chart-mobile">
-        <pre class="mermaid">
-flowchart TD
-    MS1["<b>步骤 1：旧车过户</b><br>取得二手车销售发票 · 大绿本完成转让变更"]
-    
-    MS2["<b>步骤 2：新车上牌</b><br>9月30日完成交付 · 领取行驶证与大绿本"]
-
-    MS3["<b>步骤 3：线上申报</b><br>微信搜索「京通」小程序 · 进入置换补贴系统"]
-
-    MS4["<b>步骤 4：上传材料</b><br>录入阴学斌银行卡 · 上传新旧车双套票证"]
-
-    MS5["<b>步骤 5：审核打款</b><br>商务局复核公示 · <b>补贴 1.5万 直发到卡</b>"]
-
-    MS1 --> MS2 --> MS3 --> MS4 --> MS5
-
-    style MS1 fill:#0f172a,stroke:#475569,stroke-width:1px,color:#fff
-    style MS2 fill:#0f172a,stroke:#475569,stroke-width:1px,color:#fff
-    style MS3 fill:#0f172a,stroke:#06b6d4,stroke-width:1.5px,color:#fff
-    style MS4 fill:#0f172a,stroke:#475569,stroke-width:1px,color:#fff
-    style MS5 fill:#1e293b,stroke:#10b981,stroke-width:2.5px,color:#fff
-        </pre>
+        <div class="step-box highlight">
+          <div>
+            <span class="step-num-pill">步骤 05</span>
+            <div class="step-title" style="color: var(--emerald);">审核打款</div>
+            <div class="step-desc">商务局复核及定期公示通过后，<strong>补贴 1.5 万元直发到卡</strong>。</div>
+          </div>
+        </div>
       </div>
 
       <p><strong>实操路径</strong>：</p>
@@ -2106,14 +2331,6 @@ flowchart TD
   </div>
 
   <script>
-    // Initialize Mermaid
-    mermaid.initialize({
-      startOnLoad: true,
-      theme: document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'default',
-      securityLevel: 'loose',
-      fontFamily: 'DM Sans, PingFang SC, sans-serif'
-    });
-
     // Theme Toggle
     const themeToggleBtn = document.getElementById('themeToggleBtn');
     const dockThemeBtn = document.getElementById('dockThemeBtn');
@@ -2203,7 +2420,7 @@ flowchart TD
         drawerBadge.textContent = `${checkedCount}/${total}`;
       }
       if (checkedCount === total && total > 0) {
-        progressText.innerHTML = `🎉 全部 ${total} 项核验完成！`;
+        progressText.innerHTML = `🎉 全部 ${total} 项核验完成！可安心交车`;
         progressFill.style.background = 'linear-gradient(90deg, #10b981, #06b6d4)';
       }
     }
