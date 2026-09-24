@@ -2,14 +2,14 @@
 <html lang="zh-CN" data-theme="dark">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
   <title>小米澎程N70 · 选定购车支付执行路线与全周期实战手册</title>
-  <meta name="description" content="小米澎程N70选定购车支付执行路线、资金配比、还款结清推演、现场直出临牌方案、提车全项验车避坑与汽车置换补贴申请全流程手册。" />
+  <meta name="description" content="小米澎程N70选定购车支付执行路线、资金配比、逐月还款推演、现场直出临牌方案、提车全项验车避坑与汽车置换补贴申请全流程手册。" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet" />
   
-  <!-- Mermaid.js for flowcharts -->
+  <!-- Mermaid.js -->
   <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
 
   <style>
@@ -17,11 +17,11 @@
       --font-sans: "DM Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
       --font-mono: "JetBrains Mono", "DM Mono", monospace;
       
-      /* Dark Theme Tokens (Default) */
+      /* Dark Theme (Default) */
       --bg: #090d16;
       --bg-elevated: #0f172a;
-      --bg-card: rgba(17, 24, 39, 0.75);
-      --bg-card-hover: rgba(30, 41, 59, 0.85);
+      --bg-card: rgba(17, 24, 39, 0.78);
+      --bg-card-hover: rgba(30, 41, 59, 0.9);
       --border: rgba(255, 255, 255, 0.08);
       --border-highlight: rgba(255, 255, 255, 0.16);
       
@@ -52,10 +52,10 @@
     [data-theme="light"] {
       --bg: #f8fafc;
       --bg-elevated: #ffffff;
-      --bg-card: rgba(255, 255, 255, 0.88);
+      --bg-card: rgba(255, 255, 255, 0.92);
       --bg-card-hover: #ffffff;
-      --border: rgba(15, 23, 42, 0.08);
-      --border-highlight: rgba(15, 23, 42, 0.15);
+      --border: rgba(15, 23, 42, 0.09);
+      --border-highlight: rgba(15, 23, 42, 0.16);
       
       --text-main: #0f172a;
       --text-muted: #475569;
@@ -72,6 +72,7 @@
       box-sizing: border-box;
       margin: 0;
       padding: 0;
+      -webkit-tap-highlight-color: transparent;
     }
 
     html {
@@ -90,96 +91,106 @@
       background-attachment: fixed;
       transition: background-color 0.3s ease, color 0.3s ease;
       -webkit-font-smoothing: antialiased;
+      padding-bottom: calc(90px + env(safe-area-inset-bottom));
     }
 
-    /* Container */
     .container {
       max-width: 1040px;
       margin: 0 auto;
-      padding: 30px 20px 100px;
+      padding: 20px 16px 40px;
     }
 
-    /* Header Nav */
+    @media (min-width: 768px) {
+      .container {
+        padding: 30px 24px 80px;
+      }
+    }
+
+    /* Top Sticky Header */
     .top-bar {
       position: sticky;
-      top: 16px;
+      top: max(12px, env(safe-area-inset-top));
       z-index: 100;
       display: flex;
       justify-content: space-between;
       align-items: center;
       background: var(--bg-card);
-      backdrop-filter: blur(16px);
-      -webkit-backdrop-filter: blur(16px);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
       border: 1px solid var(--border);
       border-radius: var(--radius-lg);
-      padding: 10px 18px;
+      padding: 8px 14px;
       box-shadow: var(--shadow-sm);
-      margin-bottom: 32px;
+      margin-bottom: 20px;
       transition: all 0.2s ease;
     }
 
     .brand-pill {
       display: flex;
       align-items: center;
-      gap: 10px;
+      gap: 8px;
       font-weight: 700;
-      font-size: 0.95rem;
+      font-size: 0.92rem;
       color: var(--text-main);
       text-decoration: none;
+      min-width: 0;
+    }
+
+    .brand-pill span:last-child {
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
     }
 
     .brand-badge {
       background: linear-gradient(135deg, var(--primary), #ea580c);
       color: #fff;
-      font-size: 0.75rem;
-      padding: 3px 8px;
+      font-size: 0.72rem;
+      padding: 2px 7px;
       border-radius: 6px;
       font-weight: 800;
       letter-spacing: 0.5px;
+      flex-shrink: 0;
     }
 
     .actions-group {
       display: flex;
       align-items: center;
-      gap: 8px;
+      gap: 6px;
+      flex-shrink: 0;
     }
 
     .btn-action {
       background: var(--bg-elevated);
       color: var(--text-muted);
       border: 1px solid var(--border);
-      padding: 7px 12px;
+      padding: 6px 10px;
       border-radius: var(--radius-sm);
-      font-size: 0.85rem;
+      font-size: 0.82rem;
       font-weight: 500;
       cursor: pointer;
       display: inline-flex;
       align-items: center;
-      gap: 6px;
+      gap: 5px;
       transition: all 0.2s ease;
       text-decoration: none;
+      min-height: 36px;
     }
 
     .btn-action:hover {
       color: var(--text-main);
       border-color: var(--border-highlight);
-      transform: translateY(-1px);
     }
 
-    .btn-action.active {
-      background: var(--primary);
-      color: #ffffff;
-      border-color: var(--primary);
-    }
-
-    /* Quick TOC Bar */
+    /* Quick Horizontal Swipe TOC */
     .toc-scroll {
       display: flex;
       gap: 8px;
       overflow-x: auto;
-      padding-bottom: 8px;
-      margin-bottom: 32px;
+      padding: 2px 2px 10px;
+      margin-bottom: 24px;
       scrollbar-width: none;
+      -webkit-overflow-scrolling: touch;
     }
     .toc-scroll::-webkit-scrollbar {
       display: none;
@@ -187,27 +198,28 @@
 
     .toc-chip {
       white-space: nowrap;
-      padding: 6px 14px;
+      padding: 6px 12px;
       border-radius: 20px;
-      font-size: 0.82rem;
+      font-size: 0.8rem;
       font-weight: 600;
       background: var(--bg-card);
       border: 1px solid var(--border);
       color: var(--text-muted);
       text-decoration: none;
       transition: all 0.2s;
+      flex-shrink: 0;
     }
 
-    .toc-chip:hover {
+    .toc-chip:active, .toc-chip:hover {
       color: var(--text-main);
       border-color: var(--primary);
       background: var(--bg-card-hover);
     }
 
-    /* Hero Header */
+    /* Hero */
     .hero-section {
       text-align: left;
-      padding: 24px 0 36px;
+      padding: 10px 0 24px;
     }
 
     .hero-meta-badge {
@@ -218,21 +230,28 @@
       border: 1px solid rgba(255, 105, 0, 0.3);
       color: var(--primary);
       font-weight: 700;
-      font-size: 0.8rem;
-      padding: 4px 12px;
+      font-size: 0.78rem;
+      padding: 4px 10px;
       border-radius: 20px;
-      margin-bottom: 16px;
+      margin-bottom: 12px;
+      flex-wrap: wrap;
     }
 
     .hero-title {
-      font-size: 2.2rem;
+      font-size: 1.65rem;
       font-weight: 800;
       letter-spacing: -0.03em;
       line-height: 1.25;
-      margin-bottom: 16px;
+      margin-bottom: 14px;
       background: linear-gradient(135deg, var(--text-main) 60%, var(--text-muted) 100%);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
+    }
+
+    @media (min-width: 640px) {
+      .hero-title {
+        font-size: 2.2rem;
+      }
     }
 
     .hero-quote-box {
@@ -240,22 +259,31 @@
       border: 1px solid var(--border);
       border-left: 4px solid var(--primary);
       border-radius: 0 var(--radius-md) var(--radius-md) 0;
-      padding: 16px 20px;
-      margin-bottom: 32px;
-      font-size: 0.95rem;
+      padding: 14px 16px;
+      margin-bottom: 24px;
+      font-size: 0.9rem;
       color: var(--text-muted);
+      line-height: 1.6;
     }
 
     .hero-quote-box strong {
       color: var(--text-main);
     }
 
-    /* KPI Grid */
+    /* KPI Grid - Mobile 2-column compact, Desktop 4-column */
     .kpi-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
-      gap: 16px;
-      margin-bottom: 40px;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 10px;
+      margin-bottom: 28px;
+    }
+
+    @media (min-width: 768px) {
+      .kpi-grid {
+        grid-template-columns: repeat(4, 1fr);
+        gap: 16px;
+        margin-bottom: 36px;
+      }
     }
 
     .kpi-card {
@@ -264,39 +292,40 @@
       -webkit-backdrop-filter: blur(12px);
       border: 1px solid var(--border);
       border-radius: var(--radius-md);
-      padding: 18px 20px;
+      padding: 14px 14px;
       position: relative;
       overflow: hidden;
-      transition: all 0.25s ease;
-    }
-
-    .kpi-card:hover {
-      transform: translateY(-2px);
-      border-color: var(--border-highlight);
-      box-shadow: var(--shadow-sm);
+      transition: all 0.2s ease;
     }
 
     .kpi-label {
-      font-size: 0.78rem;
+      font-size: 0.72rem;
       text-transform: uppercase;
       letter-spacing: 0.5px;
       color: var(--text-faint);
-      margin-bottom: 6px;
+      margin-bottom: 4px;
       font-weight: 600;
     }
 
     .kpi-val {
       font-family: var(--font-mono);
-      font-size: 1.65rem;
+      font-size: 1.25rem;
       font-weight: 700;
       color: var(--text-main);
-      margin-bottom: 4px;
+      margin-bottom: 2px;
       line-height: 1.2;
     }
 
+    @media (min-width: 640px) {
+      .kpi-val {
+        font-size: 1.6rem;
+      }
+    }
+
     .kpi-desc {
-      font-size: 0.82rem;
+      font-size: 0.75rem;
       color: var(--text-muted);
+      line-height: 1.4;
     }
 
     .kpi-accent-orange .kpi-val { color: var(--primary); }
@@ -304,24 +333,22 @@
     .kpi-accent-emerald .kpi-val { color: var(--emerald); }
     .kpi-accent-amber .kpi-val { color: var(--amber); }
 
-    /* Sections */
+    /* Section Cards */
     .section-block {
       background: var(--bg-card);
       border: 1px solid var(--border);
-      border-radius: var(--radius-xl);
-      padding: 32px 36px;
-      margin-bottom: 36px;
+      border-radius: var(--radius-lg);
+      padding: 20px 16px;
+      margin-bottom: 24px;
       box-shadow: var(--shadow-sm);
       position: relative;
     }
 
-    @media (max-width: 640px) {
+    @media (min-width: 768px) {
       .section-block {
-        padding: 22px 18px;
-        border-radius: var(--radius-lg);
-      }
-      .hero-title {
-        font-size: 1.7rem;
+        border-radius: var(--radius-xl);
+        padding: 32px 36px;
+        margin-bottom: 36px;
       }
     }
 
@@ -329,34 +356,43 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      margin-bottom: 24px;
-      padding-bottom: 16px;
+      margin-bottom: 18px;
+      padding-bottom: 12px;
       border-bottom: 1px solid var(--border);
+      flex-wrap: wrap;
+      gap: 10px;
     }
 
     .section-title {
-      font-size: 1.35rem;
+      font-size: 1.2rem;
       font-weight: 700;
       display: flex;
       align-items: center;
-      gap: 12px;
+      gap: 10px;
       color: var(--text-main);
+    }
+
+    @media (min-width: 640px) {
+      .section-title {
+        font-size: 1.35rem;
+      }
     }
 
     .section-number {
       font-family: var(--font-mono);
-      font-size: 0.85rem;
+      font-size: 0.8rem;
       background: var(--primary-glow);
       color: var(--primary);
-      padding: 3px 8px;
+      padding: 2px 7px;
       border-radius: 6px;
       border: 1px solid var(--primary);
+      flex-shrink: 0;
     }
 
     h3 {
-      font-size: 1.1rem;
+      font-size: 1.02rem;
       font-weight: 700;
-      margin: 28px 0 14px;
+      margin: 22px 0 12px;
       color: var(--text-main);
       display: flex;
       align-items: center;
@@ -367,23 +403,25 @@
       content: "";
       display: inline-block;
       width: 4px;
-      height: 16px;
+      height: 15px;
       background: var(--primary);
       border-radius: 2px;
+      flex-shrink: 0;
     }
 
     p, li {
       color: var(--text-muted);
-      margin-bottom: 12px;
+      margin-bottom: 10px;
+      font-size: 0.92rem;
     }
 
     ul, ol {
-      padding-left: 20px;
-      margin-bottom: 16px;
+      padding-left: 18px;
+      margin-bottom: 14px;
     }
 
     li {
-      margin-bottom: 8px;
+      margin-bottom: 6px;
     }
 
     strong {
@@ -391,26 +429,28 @@
       font-weight: 600;
     }
 
-    /* Tables */
+    /* Tables & Responsive Cards */
     .table-container {
       width: 100%;
       overflow-x: auto;
-      margin: 20px 0;
+      margin: 16px 0;
       border: 1px solid var(--border);
       border-radius: var(--radius-md);
       background: var(--bg-elevated);
+      -webkit-overflow-scrolling: touch;
     }
 
     table {
       width: 100%;
       border-collapse: collapse;
-      font-size: 0.88rem;
+      font-size: 0.85rem;
       text-align: left;
+      min-width: 540px;
     }
 
     th {
       background: rgba(255, 255, 255, 0.04);
-      padding: 12px 16px;
+      padding: 10px 12px;
       font-weight: 700;
       color: var(--text-main);
       border-bottom: 1px solid var(--border);
@@ -418,7 +458,7 @@
     }
 
     td {
-      padding: 14px 16px;
+      padding: 12px;
       border-bottom: 1px solid var(--border);
       vertical-align: top;
       color: var(--text-muted);
@@ -428,19 +468,154 @@
       border-bottom: none;
     }
 
-    tr:hover td {
-      background: rgba(255, 255, 255, 0.02);
+    /* Mobile Timeline Cards for Route B 推演表 */
+    .mobile-timeline {
+      display: none;
+      flex-direction: column;
+      gap: 12px;
+      margin: 16px 0;
     }
 
-    /* Mermaid Wrapper */
+    .mobile-timeline-item {
+      background: var(--bg-elevated);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      padding: 14px;
+      position: relative;
+    }
+
+    .mobile-timeline-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 8px;
+      gap: 8px;
+    }
+
+    .mobile-timeline-time {
+      font-family: var(--font-mono);
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: var(--primary);
+    }
+
+    .mobile-timeline-duration {
+      font-size: 0.75rem;
+      background: rgba(255, 255, 255, 0.08);
+      padding: 2px 7px;
+      border-radius: 12px;
+      color: var(--text-muted);
+    }
+
+    .mobile-timeline-title {
+      font-weight: 700;
+      font-size: 0.95rem;
+      color: var(--text-main);
+      margin-bottom: 4px;
+    }
+
+    .mobile-timeline-location {
+      font-size: 0.8rem;
+      color: var(--cyan);
+      margin-bottom: 8px;
+    }
+
+    .mobile-timeline-body {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      line-height: 1.5;
+    }
+
+    @media (max-width: 640px) {
+      .desktop-table-route-b {
+        display: none;
+      }
+      .mobile-timeline {
+        display: flex;
+      }
+    }
+
+    /* Mobile Repayment Cards for 逐月还款表 */
+    .mobile-repayment-list {
+      display: none;
+      flex-direction: column;
+      gap: 12px;
+      margin: 16px 0;
+    }
+
+    .mobile-repay-card {
+      background: var(--bg-elevated);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      padding: 14px;
+    }
+
+    .mobile-repay-card.highlight {
+      border-color: rgba(16, 185, 129, 0.4);
+      background: rgba(16, 185, 129, 0.06);
+    }
+
+    .mobile-repay-card.summary {
+      border-color: rgba(255, 105, 0, 0.4);
+      background: rgba(255, 105, 0, 0.06);
+    }
+
+    .mobile-repay-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 8px;
+    }
+
+    .mobile-repay-stage {
+      font-weight: 700;
+      font-size: 0.95rem;
+      color: var(--text-main);
+    }
+
+    .mobile-repay-amount {
+      font-family: var(--font-mono);
+      font-weight: 700;
+      font-size: 1.05rem;
+      color: var(--text-main);
+    }
+
+    .mobile-repay-row {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      margin-bottom: 4px;
+    }
+
+    .mobile-repay-desc {
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      margin-top: 8px;
+      padding-top: 8px;
+      border-top: 1px dashed var(--border);
+      line-height: 1.5;
+    }
+
+    @media (max-width: 640px) {
+      .desktop-table-repay {
+        display: none;
+      }
+      .mobile-repayment-list {
+        display: flex;
+      }
+    }
+
+    /* Mermaid Wrappers */
     .mermaid-box {
       background: var(--bg-elevated);
       border: 1px solid var(--border);
       border-radius: var(--radius-md);
-      padding: 24px;
-      margin: 20px 0;
+      padding: 16px 10px;
+      margin: 16px 0;
       overflow-x: auto;
       text-align: center;
+      -webkit-overflow-scrolling: touch;
     }
 
     .mermaid svg {
@@ -448,16 +623,38 @@
       height: auto !important;
     }
 
+    /* Responsive Flowcharts (Desktop LR vs Mobile TD) */
+    .chart-desktop {
+      display: block;
+    }
+    .chart-mobile {
+      display: none;
+    }
+
+    @media (max-width: 640px) {
+      .chart-desktop {
+        display: none;
+      }
+      .chart-mobile {
+        display: block;
+      }
+    }
+
     /* Interactive Checklist */
     .checklist-progress-bar {
       display: flex;
       align-items: center;
-      gap: 16px;
+      gap: 12px;
       background: var(--bg-elevated);
       border: 1px solid var(--border);
       border-radius: var(--radius-md);
-      padding: 14px 20px;
-      margin-bottom: 24px;
+      padding: 12px 14px;
+      margin-bottom: 20px;
+      position: sticky;
+      top: 60px;
+      z-index: 40;
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
     }
 
     .progress-track {
@@ -466,7 +663,6 @@
       background: var(--border);
       border-radius: 4px;
       overflow: hidden;
-      position: relative;
     }
 
     .progress-fill {
@@ -479,39 +675,52 @@
 
     .progress-text {
       font-family: var(--font-mono);
-      font-size: 0.85rem;
+      font-size: 0.8rem;
       font-weight: 600;
       color: var(--text-main);
       white-space: nowrap;
     }
 
-    .checklist-table {
-      width: 100%;
-      border-collapse: collapse;
+    /* Mobile-first checklist cards */
+    .checklist-cards-container {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin: 14px 0 24px;
     }
 
-    .check-row {
+    .check-card {
+      background: var(--bg-elevated);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      padding: 12px 14px;
+      display: flex;
+      gap: 12px;
+      align-items: flex-start;
       cursor: pointer;
       user-select: none;
-      transition: background 0.15s ease;
+      transition: all 0.15s ease;
+      min-height: 52px;
     }
 
-    .check-row:hover td {
-      background: rgba(255, 105, 0, 0.05);
+    .check-card:active {
+      transform: scale(0.99);
+      background: var(--bg-card-hover);
     }
 
-    .check-row.checked td {
-      background: rgba(16, 185, 129, 0.06);
+    .check-card.checked {
+      background: rgba(16, 185, 129, 0.08);
+      border-color: rgba(16, 185, 129, 0.35);
     }
 
-    .check-row.checked .check-item-title {
+    .check-card.checked .check-card-title {
       text-decoration: line-through;
       color: var(--text-faint);
     }
 
     .custom-checkbox {
-      width: 22px;
-      height: 22px;
+      width: 24px;
+      height: 24px;
       border-radius: 6px;
       border: 2px solid var(--border-highlight);
       display: flex;
@@ -519,10 +728,11 @@
       justify-content: center;
       transition: all 0.2s ease;
       background: transparent;
-      margin: 0 auto;
+      flex-shrink: 0;
+      margin-top: 2px;
     }
 
-    .check-row.checked .custom-checkbox {
+    .check-card.checked .custom-checkbox {
       background: var(--emerald);
       border-color: var(--emerald);
       color: #ffffff;
@@ -534,21 +744,39 @@
       transition: all 0.15s ease;
     }
 
-    .check-row.checked .custom-checkbox svg {
+    .check-card.checked .custom-checkbox svg {
       opacity: 1;
       transform: scale(1);
+    }
+
+    .check-card-content {
+      flex: 1;
+    }
+
+    .check-card-title {
+      font-weight: 700;
+      font-size: 0.92rem;
+      color: var(--text-main);
+      margin-bottom: 4px;
+    }
+
+    .check-card-desc {
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      line-height: 1.5;
     }
 
     /* Alerts */
     .alert-card {
       border-radius: var(--radius-md);
-      padding: 16px 20px;
-      margin: 20px 0;
-      font-size: 0.92rem;
+      padding: 14px 16px;
+      margin: 16px 0;
+      font-size: 0.88rem;
       display: flex;
-      gap: 14px;
+      gap: 12px;
       align-items: flex-start;
       border: 1px solid transparent;
+      line-height: 1.6;
     }
 
     .alert-card.info {
@@ -578,15 +806,16 @@
     .alert-icon {
       font-size: 1.2rem;
       line-height: 1;
-      margin-top: 2px;
+      margin-top: 1px;
+      flex-shrink: 0;
     }
 
     /* Tag Pills */
     .tag {
       display: inline-block;
-      padding: 2px 8px;
+      padding: 2px 7px;
       border-radius: 4px;
-      font-size: 0.76rem;
+      font-size: 0.72rem;
       font-weight: 600;
       font-family: var(--font-mono);
       margin: 2px 0;
@@ -597,14 +826,165 @@
     .tag-amber { background: rgba(245, 158, 11, 0.15); color: #fbbf24; }
     .tag-orange { background: rgba(255, 105, 0, 0.15); color: #fb923c; }
 
+    /* Bottom Floating Action Bar for Mobile Phones */
+    .mobile-bottom-dock {
+      position: fixed;
+      bottom: max(12px, env(safe-area-inset-bottom));
+      left: 16px;
+      right: 16px;
+      z-index: 99;
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      background: var(--bg-card);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1px solid var(--border-highlight);
+      border-radius: 28px;
+      padding: 6px 12px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+    }
+
+    @media (min-width: 768px) {
+      .mobile-bottom-dock {
+        display: none;
+      }
+    }
+
+    .dock-btn {
+      background: none;
+      border: none;
+      color: var(--text-muted);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 2px;
+      font-size: 0.68rem;
+      font-weight: 600;
+      cursor: pointer;
+      padding: 6px 8px;
+      border-radius: 12px;
+      transition: color 0.15s ease;
+      text-decoration: none;
+    }
+
+    .dock-btn:active, .dock-btn:hover {
+      color: var(--primary);
+    }
+
+    .dock-btn-icon {
+      font-size: 1.15rem;
+      line-height: 1;
+    }
+
+    .dock-badge {
+      background: var(--primary);
+      color: #fff;
+      font-size: 0.65rem;
+      padding: 1px 5px;
+      border-radius: 8px;
+      font-weight: 700;
+    }
+
+    /* Mobile Drawer Modal for Navigation */
+    .drawer-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.65);
+      z-index: 200;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.25s ease;
+      backdrop-filter: blur(4px);
+    }
+
+    .drawer-overlay.active {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .drawer-sheet {
+      position: fixed;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      z-index: 201;
+      background: var(--bg-elevated);
+      border-radius: 24px 24px 0 0;
+      border-top: 1px solid var(--border-highlight);
+      padding: 20px 20px calc(24px + env(safe-area-inset-bottom));
+      transform: translateY(100%);
+      transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+      max-height: 80vh;
+      overflow-y: auto;
+    }
+
+    .drawer-overlay.active .drawer-sheet {
+      transform: translateY(0);
+    }
+
+    .drawer-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 16px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .drawer-title {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--text-main);
+    }
+
+    .drawer-close {
+      background: rgba(255, 255, 255, 0.1);
+      border: none;
+      color: var(--text-muted);
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1rem;
+    }
+
+    .drawer-list {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .drawer-item {
+      padding: 12px 16px;
+      border-radius: var(--radius-sm);
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      color: var(--text-main);
+      font-size: 0.92rem;
+      font-weight: 600;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .drawer-item:active {
+      background: var(--primary);
+      color: #fff;
+    }
+
     /* Footer */
     footer {
       text-align: center;
-      padding: 40px 0 20px;
+      padding: 30px 0 10px;
       color: var(--text-faint);
-      font-size: 0.85rem;
+      font-size: 0.8rem;
       border-top: 1px solid var(--border);
-      margin-top: 60px;
+      margin-top: 40px;
     }
 
     /* Print Styles */
@@ -612,8 +992,9 @@
       body {
         background: #ffffff !important;
         color: #000000 !important;
+        padding-bottom: 0 !important;
       }
-      .top-bar, .toc-scroll, .actions-group, .btn-action {
+      .top-bar, .toc-scroll, .actions-group, .btn-action, .mobile-bottom-dock, .drawer-overlay {
         display: none !important;
       }
       .section-block {
@@ -628,6 +1009,18 @@
       }
       th, td {
         color: #000000 !important;
+      }
+      .desktop-table-route-b, .desktop-table-repay {
+        display: block !important;
+      }
+      .mobile-timeline, .mobile-repayment-list {
+        display: none !important;
+      }
+      .chart-desktop {
+        display: block !important;
+      }
+      .chart-mobile {
+        display: none !important;
       }
     }
   </style>
@@ -647,24 +1040,24 @@
           <span id="themeIcon">☀️</span> <span id="themeText">模式</span>
         </button>
         <button class="btn-action" onclick="window.print()" title="打印或保存为PDF">
-          🖨️ <span>打印/PDF</span>
+          🖨️ <span class="hide-mobile">打印/PDF</span>
         </button>
         <a href="https://github.com/amasun/n70-car-plan" target="_blank" rel="noreferrer" class="btn-action" title="在 GitHub 查看">
-          <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
-          <span>GitHub</span>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+          <span class="hide-mobile">GitHub</span>
         </a>
       </div>
     </header>
 
-    <!-- Quick Navigation Chips -->
+    <!-- Quick Navigation Chips (Horizontal Swipe) -->
     <nav class="toc-scroll">
       <a href="#section-1" class="toc-chip">① 资金出资配比</a>
       <a href="#section-2" class="toc-chip">② 逐月还款推演</a>
       <a href="#section-3" class="toc-chip">③ 落地必核清单</a>
-      <a href="#section-4" class="toc-chip">④ 提车验车检查表</a>
-      <a href="#section-5" class="toc-chip">⑤ 9.30提车上牌方案</a>
+      <a href="#section-4" class="toc-chip">④ 提车验车打勾</a>
+      <a href="#section-5" class="toc-chip">⑤ 9.30提车上牌</a>
       <a href="#section-6" class="toc-chip">⑥ 置换补贴申报</a>
-      <a href="#section-7" class="toc-chip">⑦ 小米特色验车细节</a>
+      <a href="#section-7" class="toc-chip">⑦ 小米特色避坑</a>
     </nav>
 
     <!-- Hero Header -->
@@ -691,21 +1084,21 @@
         </div>
 
         <div class="kpi-card kpi-accent-cyan">
-          <div class="kpi-label">银行信用贷本金</div>
+          <div class="kpi-label">信用贷本金</div>
           <div class="kpi-val">¥117,000</div>
           <div class="kpi-desc">36期等额本息 · 年化 3.0% 单利</div>
         </div>
 
         <div class="kpi-card kpi-accent-emerald">
-          <div class="kpi-label">提前结清利息代价</div>
+          <div class="kpi-label">提前结清利息</div>
           <div class="kpi-val">¥1,385</div>
-          <div class="kpi-desc">次年2月结清 · 仅1385元换安全垫</div>
+          <div class="kpi-desc">次年2月结清 · 仅1385元代价</div>
         </div>
 
         <div class="kpi-card kpi-accent-amber">
-          <div class="kpi-label">置换补贴综合回血</div>
-          <div class="kpi-val">+¥18,000~20k</div>
-          <div class="kpi-desc">北京以旧换新1.5万+小米置换礼遇</div>
+          <div class="kpi-label">置换综合补贴</div>
+          <div class="kpi-val">+¥1.8~2.0万</div>
+          <div class="kpi-desc">以旧换新1.5万+小米置换礼</div>
         </div>
       </div>
     </section>
@@ -757,7 +1150,8 @@
 
       <h3>阶段执行与资金全景图</h3>
       
-      <div class="mermaid-box">
+      <!-- Desktop Wide Chart -->
+      <div class="mermaid-box chart-desktop">
         <pre class="mermaid">
 flowchart LR
     T0["<b>T0 · 09.30 交付</b><br>──────────────<br>借款 11.7万 · 付全款<br>大绿本自持无抵押<br><b>本金：¥117,000</b>"]
@@ -783,8 +1177,37 @@ flowchart LR
         </pre>
       </div>
 
-      <h3>还款与结清现金流明细表</h3>
-      <div class="table-container">
+      <!-- Mobile Vertical Flowchart -->
+      <div class="mermaid-box chart-mobile">
+        <pre class="mermaid">
+flowchart TD
+    MT0["<b>T0 · 09.30 提车交付</b><br>借款 11.7万 · 纯全款付清<br>大绿本自持无抵押 · <b>本金：¥11.7万</b>"]
+    
+    MT1["<b>T1 · 2026.10 第1期</b><br>月供 <b>¥3,403</b> (本 3110 + 息 293)<br><b>剩余本金：¥113,890</b>"]
+
+    MT2["<b>T2 · 2026.11 第2期</b><br>月供 <b>¥3,403</b> · 公积金到账 <b>+2.58万</b><br><b>剩余本金：¥110,772</b>"]
+
+    MT3["<b>T3 · 2026.12 第3期</b><br>月供 <b>¥3,403</b> · 定投照常<br><b>剩余本金：¥107,646</b>"]
+
+    MT4["<b>T4 · 2027.01 第4期</b><br>月供 <b>¥3,403</b> · 资金稳步蓄水<br><b>剩余本金：¥104,513</b>"]
+
+    MT5["<b>T5 · 2027.02 全额结清</b><br>年终奖到账 · 一键提前结清<br>总利息仅 <b>¥1,385</b> · <b>本金：¥0</b>"]
+
+    MT0 --> MT1 --> MT2 --> MT3 --> MT4 --> MT5
+
+    style MT0 fill:#1e293b,stroke:#06b6d4,stroke-width:2px,color:#fff
+    style MT1 fill:#0f172a,stroke:#475569,stroke-width:1px,color:#fff
+    style MT2 fill:#0f172a,stroke:#475569,stroke-width:1px,color:#fff
+    style MT3 fill:#0f172a,stroke:#475569,stroke-width:1px,color:#fff
+    style MT4 fill:#0f172a,stroke:#475569,stroke-width:1px,color:#fff
+    style MT5 fill:#1e293b,stroke:#10b981,stroke-width:2.5px,color:#fff
+        </pre>
+      </div>
+
+      <h3>还款与结清现金流明细</h3>
+      
+      <!-- Desktop Table -->
+      <div class="table-container desktop-table-repay">
         <table>
           <thead>
             <tr>
@@ -856,6 +1279,119 @@ flowchart LR
           </tbody>
         </table>
       </div>
+
+      <!-- Mobile Repayment Cards -->
+      <div class="mobile-repayment-list">
+        <div class="mobile-repay-card">
+          <div class="mobile-repay-top">
+            <span class="mobile-repay-stage">T0 · 2026-09-30 交付</span>
+            <span class="tag tag-blue">本金 ¥11.7万</span>
+          </div>
+          <div class="mobile-repay-desc">
+            银行借款 ¥11.7万 到账，自有资金出资约 13.5 万结清全款与落地税险。纯全款客户身份，大绿本自持无抵押。
+          </div>
+        </div>
+
+        <div class="mobile-repay-card">
+          <div class="mobile-repay-top">
+            <span class="mobile-repay-stage">T1 · 2026-10 第1期</span>
+            <span class="mobile-repay-amount">¥3,402.64</span>
+          </div>
+          <div class="mobile-repay-row">
+            <span>本息明细</span>
+            <span>本金 ¥3,110.14 + 利息 ¥292.50</span>
+          </div>
+          <div class="mobile-repay-row">
+            <span>剩余本金</span>
+            <span>¥113,889.86 (偿还 2.7%)</span>
+          </div>
+          <div class="mobile-repay-desc">正常月薪结余覆盖，开始首期还款。</div>
+        </div>
+
+        <div class="mobile-repay-card">
+          <div class="mobile-repay-top">
+            <span class="mobile-repay-stage">T2 · 2026-11 第2期</span>
+            <span class="mobile-repay-amount">¥3,402.64</span>
+          </div>
+          <div class="mobile-repay-row">
+            <span>本息明细</span>
+            <span>本金 ¥3,117.92 + 利息 ¥284.72</span>
+          </div>
+          <div class="mobile-repay-row">
+            <span>剩余本金</span>
+            <span>¥110,771.94 (偿还 5.3%)</span>
+          </div>
+          <div class="mobile-repay-desc">当月季度公积金到账（+¥25,782），现金池大幅回血，还款完全无感。</div>
+        </div>
+
+        <div class="mobile-repay-card">
+          <div class="mobile-repay-top">
+            <span class="mobile-repay-stage">T3 · 2026-12 第3期</span>
+            <span class="mobile-repay-amount">¥3,402.64</span>
+          </div>
+          <div class="mobile-repay-row">
+            <span>本息明细</span>
+            <span>本金 ¥3,125.71 + 利息 ¥276.93</span>
+          </div>
+          <div class="mobile-repay-row">
+            <span>剩余本金</span>
+            <span>¥107,646.23 (偿还 8.0%)</span>
+          </div>
+          <div class="mobile-repay-desc">税后月薪盈余覆盖，每月 ¥8,000 指数基金定投照常扣划。</div>
+        </div>
+
+        <div class="mobile-repay-card">
+          <div class="mobile-repay-top">
+            <span class="mobile-repay-stage">T4 · 2027-01 第4期</span>
+            <span class="mobile-repay-amount">¥3,402.64</span>
+          </div>
+          <div class="mobile-repay-row">
+            <span>本息明细</span>
+            <span>本金 ¥3,133.52 + 利息 ¥269.12</span>
+          </div>
+          <div class="mobile-repay-row">
+            <span>剩余本金</span>
+            <span>¥104,512.71 (偿还 10.7%)</span>
+          </div>
+          <div class="mobile-repay-desc">正常月薪结余覆盖，资金稳步累积，静待次月年终奖。</div>
+        </div>
+
+        <div class="mobile-repay-card highlight">
+          <div class="mobile-repay-top">
+            <span class="mobile-repay-stage">T5 · 2027-02 全额结清</span>
+            <span class="tag tag-green">一键还清</span>
+          </div>
+          <div class="mobile-repay-row">
+            <span>结清还款总额</span>
+            <strong style="color: var(--emerald); font-size: 1.05rem;">¥104,773.99</strong>
+          </div>
+          <div class="mobile-repay-row">
+            <span>本息构成</span>
+            <span>本金 ¥104,512.71 + 当期利息 ¥261.28</span>
+          </div>
+          <div class="mobile-repay-row">
+            <span>结清后本金</span>
+            <strong style="color: var(--emerald);">¥0.00 (100% 结清)</strong>
+          </div>
+          <div class="mobile-repay-desc"><strong>4个月年终奖（15~18万）+ 公积金（2.58万）集中到账</strong>，手机银行 App 申请提前还款，一次性无损结清。</div>
+        </div>
+
+        <div class="mobile-repay-card summary">
+          <div class="mobile-repay-top">
+            <span class="mobile-repay-stage">全周期汇总</span>
+            <span class="tag tag-orange">年化 3.0% 单利</span>
+          </div>
+          <div class="mobile-repay-row">
+            <span>实际总支出</span>
+            <span>¥118,384.55</span>
+          </div>
+          <div class="mobile-repay-row">
+            <span>总利息支出</span>
+            <strong style="color: var(--primary);">仅 ¥1,384.55</strong>
+          </div>
+          <div class="mobile-repay-desc"><strong>仅花 1,385 元利息代价，换取全家 5 个月充裕的现金安全垫与流动性自由。</strong></div>
+        </div>
+      </div>
     </section>
 
     <!-- Section 3: 落地实操必核清单 -->
@@ -887,7 +1423,7 @@ flowchart LR
       </ol>
     </section>
 
-    <!-- Section 4: 提车实操验车检验清单 (Interactive Checklist) -->
+    <!-- Section 4: 提车实操验车检验清单 (Interactive Cards for Mobile & Desktop) -->
     <section class="section-block" id="section-4">
       <div class="section-header">
         <h2 class="section-title">
@@ -906,207 +1442,159 @@ flowchart LR
       </div>
 
       <h3>1. 证件与随车附件核查（法律与权属）</h3>
-      <div class="table-container">
-        <table class="checklist-table">
-          <thead>
-            <tr>
-              <th style="width: 150px;">检验类目</th>
-              <th>核验要点与标准</th>
-              <th style="width: 70px; text-align: center;">核验</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr class="check-row" data-check-id="c1">
-              <td><span class="check-item-title">三码一致性</span></td>
-              <td>核对<strong>车辆合格证</strong>、<strong>车架铭牌（B柱）</strong>、<strong>挡风玻璃左下角 VIN 码</strong>与<strong>销售发票</strong>上的车架号完全一致。</td>
-              <td style="text-align: center;">
-                <div class="custom-checkbox">
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                </div>
-              </td>
-            </tr>
-            <tr class="check-row" data-check-id="c2">
-              <td><span class="check-item-title">票证完整性</span></td>
-              <td>机动车销售统一发票（发票联/报税联/注册登记联）、车辆一致性证书、环保清单、三包凭证。</td>
-              <td style="text-align: center;">
-                <div class="custom-checkbox">
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                </div>
-              </td>
-            </tr>
-            <tr class="check-row" data-check-id="c3">
-              <td><span class="check-item-title">钥匙与配对</span></td>
-              <td>实体遥控钥匙 2 把、NFC 卡片钥匙 2 张、手机 App 蓝牙数字钥匙激活配对正常。</td>
-              <td style="text-align: center;">
-                <div class="custom-checkbox">
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                </div>
-              </td>
-            </tr>
-            <tr class="check-row" data-check-id="c4">
-              <td><span class="check-item-title">随车应急工具</span></td>
-              <td>三角警示牌、反光背心、随车充气泵/补胎液、牵引钩、便携式放电设备（如有赠送/选配）。</td>
-              <td style="text-align: center;">
-                <div class="custom-checkbox">
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                </div>
-              </td>
-            </tr>
-            <tr class="check-row" data-check-id="c5">
-              <td><span class="check-item-title">临时牌照</span></td>
-              <td>临牌信息核对（车架号、车主姓名），确认临牌在有效期限内（建议至少覆盖 15 天以上）。</td>
-              <td style="text-align: center;">
-                <div class="custom-checkbox">
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                </div>
-              </td>
-            </tr>
-          </tbody>
-        </table>
+      <div class="checklist-cards-container">
+        <div class="check-card" data-check-id="c1">
+          <div class="custom-checkbox"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg></div>
+          <div class="check-card-content">
+            <div class="check-card-title">三码一致性</div>
+            <div class="check-card-desc">核对<strong>车辆合格证</strong>、<strong>车架铭牌（B柱）</strong>、<strong>挡风玻璃左下角 VIN 码</strong>与<strong>销售发票</strong>上的车架号完全一致。</div>
+          </div>
+        </div>
+
+        <div class="check-card" data-check-id="c2">
+          <div class="custom-checkbox"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg></div>
+          <div class="check-card-content">
+            <div class="check-card-title">票证完整性</div>
+            <div class="check-card-desc">机动车销售统一发票（发票联/报税联/注册登记联）、车辆一致性证书、环保清单、三包凭证。</div>
+          </div>
+        </div>
+
+        <div class="check-card" data-check-id="c3">
+          <div class="custom-checkbox"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg></div>
+          <div class="check-card-content">
+            <div class="check-card-title">钥匙与配对</div>
+            <div class="check-card-desc">实体遥控钥匙 2 把、NFC 卡片钥匙 2 张、手机 App 蓝牙数字钥匙激活配对正常。</div>
+          </div>
+        </div>
+
+        <div class="check-card" data-check-id="c4">
+          <div class="custom-checkbox"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg></div>
+          <div class="check-card-content">
+            <div class="check-card-title">随车应急工具</div>
+            <div class="check-card-desc">三角警示牌、反光背心、随车充气泵/补胎液、牵引钩、便携式放电设备（如有赠送/选配）。</div>
+          </div>
+        </div>
+
+        <div class="check-card" data-check-id="c5">
+          <div class="custom-checkbox"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg></div>
+          <div class="check-card-content">
+            <div class="check-card-title">临时牌照</div>
+            <div class="check-card-desc">临牌信息核对（车架号、车主姓名），确认临牌在有效期限内（建议至少覆盖 15 天以上）。</div>
+          </div>
+        </div>
       </div>
 
       <h3>2. 车身外观与装配工艺（顺光/逆光仔细排查）</h3>
-      <div class="table-container">
-        <table class="checklist-table">
-          <thead>
-            <tr>
-              <th style="width: 150px;">检验类目</th>
-              <th>核验要点与标准</th>
-              <th style="width: 70px; text-align: center;">核验</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr class="check-row" data-check-id="c6">
-              <td><span class="check-item-title">全车漆面</span></td>
-              <td>车辆必须停放在<strong>光线充足处</strong>或车间灯阵下；顺光与逆光观察前后杠、侧裙、四门折角是否有橘皮、色差、划痕、小凹坑或后补漆痕迹（可使用或要求交付顾问提供漆膜仪测厚，正常在 100~150μm 且分布均匀）。</td>
-              <td style="text-align: center;">
-                <div class="custom-checkbox">
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                </div>
-              </td>
-            </tr>
-            <tr class="check-row" data-check-id="c7">
-              <td><span class="check-item-title">装配接缝</span></td>
-              <td>机舱盖两侧接缝、尾厢盖左右接缝、四门门缝对称度，缝隙公差应均匀一致，无肉眼可见的高低差或左右明显宽窄不一。</td>
-              <td style="text-align: center;">
-                <div class="custom-checkbox">
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                </div>
-              </td>
-            </tr>
-            <tr class="check-row" data-check-id="c8">
-              <td><span class="check-item-title">全车玻璃</span></td>
-              <td>检查挡风玻璃、侧窗、全景天幕玻璃标识右下角的生产年月（圆点+数字），出厂月份应早于或接近整车出厂日期，玻璃表面无砂眼与划痕。</td>
-              <td style="text-align: center;">
-                <div class="custom-checkbox">
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                </div>
-              </td>
-            </tr>
-            <tr class="check-row" data-check-id="c9">
-              <td><span class="check-item-title">轮胎与轮毂</span></td>
-              <td>四个轮毂边缘无运车蹭伤；核对轮胎品牌规格与选配一致；查验轮胎生产批次 DOT 代码（如 3226 代表 2026 年第 32 周）；检查四轮原始胎毛是否完好，胎压显示是否正常（冷态约 2.6~2.9 bar）。</td>
-              <td style="text-align: center;">
-                <div class="custom-checkbox">
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                </div>
-              </td>
-            </tr>
-          </tbody>
-        </table>
+      <div class="checklist-cards-container">
+        <div class="check-card" data-check-id="c6">
+          <div class="custom-checkbox"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg></div>
+          <div class="check-card-content">
+            <div class="check-card-title">全车漆面</div>
+            <div class="check-card-desc">车辆停在<strong>光线充足处</strong>或车间灯阵下；顺光与逆光观察前后杠、侧裙、四门折角是否有橘皮、色差、划痕、小凹坑或后补漆痕迹（漆膜仪测厚约 100~150μm）。</div>
+          </div>
+        </div>
+
+        <div class="check-card" data-check-id="c7">
+          <div class="custom-checkbox"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg></div>
+          <div class="check-card-content">
+            <div class="check-card-title">装配接缝</div>
+            <div class="check-card-desc">机舱盖两侧接缝、尾厢盖左右接缝、四门门缝对称度，缝隙公差应均匀一致，无肉眼可见的高低差或宽窄不一。</div>
+          </div>
+        </div>
+
+        <div class="check-card" data-check-id="c8">
+          <div class="custom-checkbox"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg></div>
+          <div class="check-card-content">
+            <div class="check-card-title">全车玻璃</div>
+            <div class="check-card-desc">检查挡风玻璃、侧窗、全景天幕玻璃标识右下角生产年月（圆点+数字），出厂月份应早于或接近整车出厂日期，表面无砂眼划痕。</div>
+          </div>
+        </div>
+
+        <div class="check-card" data-check-id="c9">
+          <div class="custom-checkbox"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg></div>
+          <div class="check-card-content">
+            <div class="check-card-title">轮胎与轮毂</div>
+            <div class="check-card-desc">四个轮毂边缘无运车蹭伤；核对轮胎品牌规格与选配一致；查验轮胎生产批次 DOT 代码；检查四轮原始胎毛完好，冷态胎压约 2.6~2.9 bar。</div>
+          </div>
+        </div>
       </div>
 
       <h3>3. 座舱内饰与机械电气功能</h3>
-      <div class="table-container">
-        <table class="checklist-table">
-          <thead>
-            <tr>
-              <th style="width: 150px;">检验类目</th>
-              <th>核验要点与标准</th>
-              <th style="width: 70px; text-align: center;">核验</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr class="check-row" data-check-id="c10">
-              <td><span class="check-item-title">座椅与皮革面料</span></td>
-              <td>真皮/翻毛皮座椅表面无折痕磨损、污渍或开线；主副驾电动调节、座椅通风、座椅加热、按摩功能逐项测试有效。</td>
-              <td style="text-align: center;">
-                <div class="custom-checkbox"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg></div>
-              </td>
-            </tr>
-            <tr class="check-row" data-check-id="c11">
-              <td><span class="check-item-title">车机与仪表屏</span></td>
-              <td>中控大屏、仪表屏、HUD 抬头显示表面无划痕；在纯白/纯黑壁纸下检查屏幕是否有坏点、亮点、漏光；触控响应流畅无卡顿。</td>
-              <td style="text-align: center;">
-                <div class="custom-checkbox"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg></div>
-              </td>
-            </tr>
-            <tr class="check-row" data-check-id="c12">
-              <td><span class="check-item-title">车窗与遮阳机构</span></td>
-              <td>四门车窗一键升降顺畅无异响、防夹手功能有效；全景天幕电动遮阳帘（如有）开合顺畅平整。</td>
-              <td style="text-align: center;">
-                <div class="custom-checkbox"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg></div>
-              </td>
-            </tr>
-            <tr class="check-row" data-check-id="c13">
-              <td><span class="check-item-title">空调与照明</span></td>
-              <td>空调冷风/热风制热制冷迅速，出风口扫风与分区温控正常，车内无异味；前后大灯、日行灯、刹车灯、车内氛围灯全功能点亮测试。</td>
-              <td style="text-align: center;">
-                <div class="custom-checkbox"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg></div>
-              </td>
-            </tr>
-            <tr class="check-row" data-check-id="c14">
-              <td><span class="check-item-title">储物与电动尾厢</span></td>
-              <td>手套箱、扶手箱开关阻尼正常；前后备箱电动开关、脚踢感应/按键闭锁测试顺畅无异响。</td>
-              <td style="text-align: center;">
-                <div class="custom-checkbox"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg></div>
-              </td>
-            </tr>
-          </tbody>
-        </table>
+      <div class="checklist-cards-container">
+        <div class="check-card" data-check-id="c10">
+          <div class="custom-checkbox"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg></div>
+          <div class="check-card-content">
+            <div class="check-card-title">座椅与皮革面料</div>
+            <div class="check-card-desc">真皮/翻毛皮座椅表面无折痕磨损、污渍或开线；主副驾电动调节、座椅通风、座椅加热、按摩功能逐项测试有效。</div>
+          </div>
+        </div>
+
+        <div class="check-card" data-check-id="c11">
+          <div class="custom-checkbox"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg></div>
+          <div class="check-card-content">
+            <div class="check-card-title">车机与仪表屏</div>
+            <div class="check-card-desc">中控大屏、仪表屏、HUD 抬头显示表面无划痕；在纯白/纯黑壁纸下检查屏幕是否有坏点、亮点、漏光；触控响应流畅无卡顿。</div>
+          </div>
+        </div>
+
+        <div class="check-card" data-check-id="c12">
+          <div class="custom-checkbox"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg></div>
+          <div class="check-card-content">
+            <div class="check-card-title">车窗与遮阳机构</div>
+            <div class="check-card-desc">四门车窗一键升降顺畅无异响、防夹手功能有效；全景天幕电动遮阳帘（如有）开合顺畅平整。</div>
+          </div>
+        </div>
+
+        <div class="check-card" data-check-id="c13">
+          <div class="custom-checkbox"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg></div>
+          <div class="check-card-content">
+            <div class="check-card-title">空调与照明</div>
+            <div class="check-card-desc">空调冷热风迅速，出风口扫风与分区温控正常，车内无异味；前后大灯、日行灯、刹车灯、车内氛围灯全功能点亮测试。</div>
+          </div>
+        </div>
+
+        <div class="check-card" data-check-id="c14">
+          <div class="custom-checkbox"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg></div>
+          <div class="check-card-content">
+            <div class="check-card-title">储物与电动尾厢</div>
+            <div class="check-card-desc">手套箱、扶手箱开关阻尼正常；前后备箱电动开关、脚踢感应/按键闭锁测试顺畅无异响。</div>
+          </div>
+        </div>
       </div>
 
       <h3>4. 三电核心与网联功能（纯电专属）</h3>
-      <div class="table-container">
-        <table class="checklist-table">
-          <thead>
-            <tr>
-              <th style="width: 150px;">检验类目</th>
-              <th>核验要点与标准</th>
-              <th style="width: 70px; text-align: center;">核验</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr class="check-row" data-check-id="c15">
-              <td><span class="check-item-title">出厂日期与里程</span></td>
-              <td>查验 B 柱车辆铭牌，出厂日期距交付日应在 <strong>3 个月内</strong>（严防超长库存车）；仪表初始总行驶里程应在 <strong>10 ~ 50 km 内</strong>（过高需查问转运原因）。</td>
-              <td style="text-align: center;">
-                <div class="custom-checkbox"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg></div>
-              </td>
-            </tr>
-            <tr class="check-row" data-check-id="c16">
-              <td><span class="check-item-title">电池电量状态</span></td>
-              <td>交付时动力电池电量（SoC）建议在 <strong>60% 以上</strong>；车机健康度自检无任何三电故障报警代码。</td>
-              <td style="text-align: center;">
-                <div class="custom-checkbox"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg></div>
-              </td>
-            </tr>
-            <tr class="check-row" data-check-id="c17">
-              <td><span class="check-item-title">快慢充口机构</span></td>
-              <td>手动/电动按键打开快充口与慢充口，盖板阻尼正常，充电口针脚平直无氧化烧蚀痕迹。</td>
-              <td style="text-align: center;">
-                <div class="custom-checkbox"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg></div>
-              </td>
-            </tr>
-            <tr class="check-row" data-check-id="c18">
-              <td><span class="check-item-title">车主绑定与网联</span></td>
-              <td>现场完成车主账号登录与人车绑定，测试车载 5G 信号、车载 GPS 定位、手机 App 远程解锁/控温功能畅通。</td>
-              <td style="text-align: center;">
-                <div class="custom-checkbox"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg></div>
-              </td>
-            </tr>
-          </tbody>
-        </table>
+      <div class="checklist-cards-container">
+        <div class="check-card" data-check-id="c15">
+          <div class="custom-checkbox"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg></div>
+          <div class="check-card-content">
+            <div class="check-card-title">出厂日期与里程</div>
+            <div class="check-card-desc">查验 B 柱车辆铭牌，出厂日期距交付日应在 <strong>3 个月内</strong>；仪表初始总行驶里程应在 <strong>10 ~ 50 km 内</strong>。</div>
+          </div>
+        </div>
+
+        <div class="check-card" data-check-id="c16">
+          <div class="custom-checkbox"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg></div>
+          <div class="check-card-content">
+            <div class="check-card-title">电池电量状态</div>
+            <div class="check-card-desc">交付时动力电池电量（SoC）建议在 <strong>60% 以上</strong>；车机健康度自检无任何三电故障报警代码。</div>
+          </div>
+        </div>
+
+        <div class="check-card" data-check-id="c17">
+          <div class="custom-checkbox"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg></div>
+          <div class="check-card-content">
+            <div class="check-card-title">快慢充口机构</div>
+            <div class="check-card-desc">按键打开快充口与慢充口，盖板阻尼正常，充电口针脚平直无氧化烧蚀痕迹。</div>
+          </div>
+        </div>
+
+        <div class="check-card" data-check-id="c18">
+          <div class="custom-checkbox"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg></div>
+          <div class="check-card-content">
+            <div class="check-card-title">车主绑定与网联</div>
+            <div class="check-card-desc">现场完成车主账号登录与人车绑定，测试车载 5G 信号、车载 GPS 定位、手机 App 远程解锁/控温功能畅通。</div>
+          </div>
+        </div>
       </div>
 
       <h3>5. 交付签署避坑铁律</h3>
@@ -1149,9 +1637,9 @@ flowchart LR
         <table>
           <thead>
             <tr>
-              <th style="width: 220px;">决策路径</th>
+              <th style="width: 200px;">决策路径</th>
               <th>执行节奏</th>
-              <th style="width: 130px;">耗时评估</th>
+              <th style="width: 120px;">耗时评估</th>
               <th>优劣势与适配场景</th>
             </tr>
           </thead>
@@ -1198,7 +1686,9 @@ flowchart LR
       </ul>
 
       <h3>3. 路线 B 执行推演表（若选择 9月30日 当日冲刺上牌）</h3>
-      <div class="table-container">
+      
+      <!-- Desktop Table -->
+      <div class="table-container desktop-table-route-b">
         <table>
           <thead>
             <tr>
@@ -1275,6 +1765,89 @@ flowchart LR
             </tr>
           </tbody>
         </table>
+      </div>
+
+      <!-- Mobile Timeline List -->
+      <div class="mobile-timeline">
+        <div class="mobile-timeline-item">
+          <div class="mobile-timeline-header">
+            <span class="mobile-timeline-time">08:00 - 08:30</span>
+            <span class="mobile-timeline-duration">0.5 小时</span>
+          </div>
+          <div class="mobile-timeline-title">出发转场</div>
+          <div class="mobile-timeline-location">📍 北京人家 ➔ 小米交付中心 (~15km, 25分)</div>
+          <div class="mobile-timeline-body">携带资料包：双方身份证原件、指标确认通知书打印件、银行卡、手机充电宝。</div>
+        </div>
+
+        <div class="mobile-timeline-item">
+          <div class="mobile-timeline-header">
+            <span class="mobile-timeline-time">08:30 - 10:00</span>
+            <span class="mobile-timeline-duration">1.5 小时</span>
+          </div>
+          <div class="mobile-timeline-title">提车实测与核验</div>
+          <div class="mobile-timeline-location">📍 小米昌平未来科技园交付中心</div>
+          <div class="mobile-timeline-body">1. 对照清单核验漆面、玻璃批次与三电功能。<br>2. 刷卡付清车款尾款 ¥228,900 与保费约 ¥7,500（自有资金净出资约 13.5 万）。</div>
+        </div>
+
+        <div class="mobile-timeline-item">
+          <div class="mobile-timeline-header">
+            <span class="mobile-timeline-time">10:00 - 11:00</span>
+            <span class="mobile-timeline-duration">1.0 小时</span>
+          </div>
+          <div class="mobile-timeline-title">开票、出险与直出临牌</div>
+          <div class="mobile-timeline-location">📍 小米交付中心业务大厅</div>
+          <div class="mobile-timeline-body">1. 现场开具发票（购买方：阴学斌）。<br>2. 激活交强险保单当天生效。<br>3. <strong>现场直接核发纸质临牌贴前后风挡（此时已具备完整合法路权）</strong>。<br>4. 完成购置税免税申报。</div>
+        </div>
+
+        <div class="mobile-timeline-item">
+          <div class="mobile-timeline-header">
+            <span class="mobile-timeline-time">11:00 - 12:00</span>
+            <span class="mobile-timeline-duration">1.0 小时</span>
+          </div>
+          <div class="mobile-timeline-title">跨区转场与简餐</div>
+          <div class="mobile-timeline-location">📍 未来科技园 ➔ 京北车管所 (~28km, 40分)</div>
+          <div class="mobile-timeline-body"><strong>挂临牌合法自驾通行</strong>，直达昌平马池口北方检测场/京北车管所，中途快速解决简餐。</div>
+        </div>
+
+        <div class="mobile-timeline-item">
+          <div class="mobile-timeline-header">
+            <span class="mobile-timeline-time">12:00 - 13:00</span>
+            <span class="mobile-timeline-duration">1.0 小时</span>
+          </div>
+          <div class="mobile-timeline-title">查验排队与就位</div>
+          <div class="mobile-timeline-location">📍 京北车管所查验区入口</div>
+          <div class="mobile-timeline-body">排入新车查验通道。<em>观察现场排队车辆数量，若排队已超 50 台，可就地决定改走路线 A 直接撤退返程回家过节。</em></div>
+        </div>
+
+        <div class="mobile-timeline-item">
+          <div class="mobile-timeline-header">
+            <span class="mobile-timeline-time">13:00 - 14:30</span>
+            <span class="mobile-timeline-duration">1.5 小时</span>
+          </div>
+          <div class="mobile-timeline-title">外检拓号与查验</div>
+          <div class="mobile-timeline-location">📍 京北车管所查验线</div>
+          <div class="mobile-timeline-body">核对车架号、拍照、核验轮胎规格与三角反光背心，生成查验密封袋。</div>
+        </div>
+
+        <div class="mobile-timeline-item">
+          <div class="mobile-timeline-header">
+            <span class="mobile-timeline-time">14:30 - 16:30</span>
+            <span class="mobile-timeline-duration">2.0 小时</span>
+          </div>
+          <div class="mobile-timeline-title">业务受理、选号与制证归档</div>
+          <div class="mobile-timeline-location">📍 业务大厅窗口</div>
+          <div class="mobile-timeline-body">窗口提交指标书、发票、合格证、保单、代办委托与双方证件，现场选号。缴纳工本费约 120 元，现场领取<strong>行驶证、大绿本</strong>，办理正式号牌邮寄。</div>
+        </div>
+
+        <div class="mobile-timeline-item">
+          <div class="mobile-timeline-header">
+            <span class="mobile-timeline-time">16:30 - 17:30</span>
+            <span class="mobile-timeline-duration">1.0 小时</span>
+          </div>
+          <div class="mobile-timeline-title">合规自驾归家</div>
+          <div class="mobile-timeline-location">📍 京北车管所 ➔ 北京人家 (~22km, 35分)</div>
+          <div class="mobile-timeline-body">手续全齐大绿本在手，满载返程。</div>
+        </div>
       </div>
 
       <div class="alert-card danger">
@@ -1356,7 +1929,9 @@ flowchart LR
       </ol>
 
       <h3>3. 申报步骤与实操路径</h3>
-      <div class="mermaid-box">
+      
+      <!-- Desktop Wide Chart -->
+      <div class="mermaid-box chart-desktop">
         <pre class="mermaid">
 flowchart LR
     S1["<b>步骤 1：旧车过户</b><br>──────────────<br>取得二手车销售发票<br>大绿本完成转让变更"]
@@ -1379,11 +1954,35 @@ flowchart LR
         </pre>
       </div>
 
+      <!-- Mobile Vertical Chart -->
+      <div class="mermaid-box chart-mobile">
+        <pre class="mermaid">
+flowchart TD
+    MS1["<b>步骤 1：旧车过户</b><br>取得二手车销售发票 · 大绿本完成转让变更"]
+    
+    MS2["<b>步骤 2：新车上牌</b><br>9月30日完成交付 · 领取行驶证与大绿本"]
+
+    MS3["<b>步骤 3：线上申报</b><br>微信搜索「京通」小程序 · 进入置换补贴系统"]
+
+    MS4["<b>步骤 4：上传材料</b><br>录入阴学斌银行卡 · 上传新旧车双套票证"]
+
+    MS5["<b>步骤 5：审核打款</b><br>商务局复核公示 · <b>补贴 1.5万 直发到卡</b>"]
+
+    MS1 --> MS2 --> MS3 --> MS4 --> MS5
+
+    style MS1 fill:#0f172a,stroke:#475569,stroke-width:1px,color:#fff
+    style MS2 fill:#0f172a,stroke:#475569,stroke-width:1px,color:#fff
+    style MS3 fill:#0f172a,stroke:#06b6d4,stroke-width:1.5px,color:#fff
+    style MS4 fill:#0f172a,stroke:#475569,stroke-width:1px,color:#fff
+    style MS5 fill:#1e293b,stroke:#10b981,stroke-width:2.5px,color:#fff
+        </pre>
+      </div>
+
       <p><strong>实操路径</strong>：</p>
       <ol>
         <li>手机打开微信或支付宝，搜索进入 <strong>“京通” 小程序</strong>。</li>
         <li>搜索栏输入并进入 <strong>“汽车置换更新补贴”</strong>（或进入市商务局以旧换新专区）。</li>
-        <li>身份验证：由<strong>阴学斌本人进行人脸识别验证登录</strong>（或使用阴学斌实名认证的微销/支付宝登录操作）。</li>
+        <li>身份验证：由<strong>阴学斌本人进行人脸识别验证登录</strong>（或使用阴学斌实名认证的微信号/支付宝登录操作）。</li>
         <li>依次录入申请人基本信息、旧车转出凭证与新车上牌发票证件照片。</li>
         <li>确认无误后点击“提交申请”。</li>
         <li>进度跟踪：约 5~10 个工作日初审，复核及公示通过后，通常在 <strong>15 ~ 30 个工作日内</strong> 资金由财政直达银行账户。</li>
@@ -1467,6 +2066,45 @@ flowchart LR
 
   </div>
 
+  <!-- Mobile Bottom Floating Action Bar -->
+  <aside class="mobile-bottom-dock" aria-label="移动端快速操作栏">
+    <a href="#section-4" class="dock-btn" title="查看验车打勾清单">
+      <span class="dock-btn-icon">📋</span>
+      <span>验车清单</span>
+    </a>
+    <button type="button" class="dock-btn" id="openDrawerBtn" title="打开章节目录">
+      <span class="dock-btn-icon">🧭</span>
+      <span>章节导航</span>
+    </button>
+    <button type="button" class="dock-btn" id="dockThemeBtn" title="切换深浅主题">
+      <span class="dock-btn-icon" id="dockThemeIcon">☀️</span>
+      <span>模式</span>
+    </button>
+    <button type="button" class="dock-btn" onclick="window.scrollTo({top: 0, behavior: 'smooth'})" title="返回顶部">
+      <span class="dock-btn-icon">🔝</span>
+      <span>回顶部</span>
+    </button>
+  </aside>
+
+  <!-- Mobile Navigation Bottom Drawer -->
+  <div class="drawer-overlay" id="drawerOverlay">
+    <div class="drawer-sheet">
+      <div class="drawer-header">
+        <span class="drawer-title">目录导航</span>
+        <button type="button" class="drawer-close" id="closeDrawerBtn" aria-label="关闭目录">✕</button>
+      </div>
+      <div class="drawer-list">
+        <a href="#section-1" class="drawer-item"><span>01 资金出资配比</span><span>›</span></a>
+        <a href="#section-2" class="drawer-item"><span>02 逐月执行路线图</span><span>›</span></a>
+        <a href="#section-3" class="drawer-item"><span>03 落地实操必核清单</span><span>›</span></a>
+        <a href="#section-4" class="drawer-item"><span>04 提车实操验车打勾</span><span class="dock-badge" id="drawerBadge">0/19</span></a>
+        <a href="#section-5" class="drawer-item"><span>05 9.30提车与上牌方案</span><span>›</span></a>
+        <a href="#section-6" class="drawer-item"><span>06 汽车置换更新补贴</span><span>›</span></a>
+        <a href="#section-7" class="drawer-item"><span>07 小米特色验车细节</span><span>›</span></a>
+      </div>
+    </div>
+  </div>
+
   <script>
     // Initialize Mermaid
     mermaid.initialize({
@@ -1478,34 +2116,64 @@ flowchart LR
 
     // Theme Toggle
     const themeToggleBtn = document.getElementById('themeToggleBtn');
+    const dockThemeBtn = document.getElementById('dockThemeBtn');
     const themeIcon = document.getElementById('themeIcon');
+    const dockThemeIcon = document.getElementById('dockThemeIcon');
     const themeText = document.getElementById('themeText');
 
     function setTheme(theme) {
       document.documentElement.setAttribute('data-theme', theme);
       localStorage.setItem('n70_theme', theme);
-      if (theme === 'light') {
-        themeIcon.textContent = '🌙';
-        themeText.textContent = '暗黑';
-      } else {
-        themeIcon.textContent = '☀️';
-        themeText.textContent = '浅色';
-      }
+      const isLight = theme === 'light';
+      themeIcon.textContent = isLight ? '🌙' : '☀️';
+      dockThemeIcon.textContent = isLight ? '🌙' : '☀️';
+      themeText.textContent = isLight ? '暗黑' : '浅色';
     }
 
     const savedTheme = localStorage.getItem('n70_theme') || 'dark';
     setTheme(savedTheme);
 
-    themeToggleBtn.addEventListener('click', () => {
+    function toggleTheme() {
       const current = document.documentElement.getAttribute('data-theme');
       setTheme(current === 'dark' ? 'light' : 'dark');
+    }
+
+    themeToggleBtn.addEventListener('click', toggleTheme);
+    dockThemeBtn.addEventListener('click', toggleTheme);
+
+    // Mobile Drawer Navigation
+    const openDrawerBtn = document.getElementById('openDrawerBtn');
+    const closeDrawerBtn = document.getElementById('closeDrawerBtn');
+    const drawerOverlay = document.getElementById('drawerOverlay');
+
+    function openDrawer() {
+      drawerOverlay.classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeDrawer() {
+      drawerOverlay.classList.remove('active');
+      document.body.style.overflow = '';
+    }
+
+    openDrawerBtn.addEventListener('click', openDrawer);
+    closeDrawerBtn.addEventListener('click', closeDrawer);
+    drawerOverlay.addEventListener('click', (e) => {
+      if (e.target === drawerOverlay) closeDrawer();
+    });
+
+    document.querySelectorAll('.drawer-item').forEach(item => {
+      item.addEventListener('click', () => {
+        closeDrawer();
+      });
     });
 
     // Interactive Checklist Logic with LocalStorage
-    const checkRows = document.querySelectorAll('.check-row');
+    const checkCards = document.querySelectorAll('.check-card');
     const progressFill = document.getElementById('checklistProgressFill');
     const progressText = document.getElementById('checklistProgressText');
     const resetBtn = document.getElementById('resetChecklistBtn');
+    const drawerBadge = document.getElementById('drawerBadge');
     const STORAGE_KEY = 'n70_checklist_state';
 
     let checkedState = {};
@@ -1516,30 +2184,33 @@ flowchart LR
     }
 
     function updateProgress() {
-      const total = checkRows.length;
+      const total = checkCards.length;
       let checkedCount = 0;
-      checkRows.forEach(row => {
-        const id = row.getAttribute('data-check-id');
+      checkCards.forEach(card => {
+        const id = card.getAttribute('data-check-id');
         if (checkedState[id]) {
-          row.classList.add('checked');
+          card.classList.add('checked');
           checkedCount++;
         } else {
-          row.classList.remove('checked');
+          card.classList.remove('checked');
         }
       });
 
       const pct = Math.round((checkedCount / total) * 100);
       progressFill.style.width = pct + '%';
       progressText.textContent = `已核验 ${checkedCount} / ${total} 项 (${pct}%)`;
+      if (drawerBadge) {
+        drawerBadge.textContent = `${checkedCount}/${total}`;
+      }
       if (checkedCount === total && total > 0) {
-        progressText.innerHTML = `🎉 全部 ${total} 项核验完成！可安心交车`;
+        progressText.innerHTML = `🎉 全部 ${total} 项核验完成！`;
         progressFill.style.background = 'linear-gradient(90deg, #10b981, #06b6d4)';
       }
     }
 
-    checkRows.forEach(row => {
-      row.addEventListener('click', () => {
-        const id = row.getAttribute('data-check-id');
+    checkCards.forEach(card => {
+      card.addEventListener('click', () => {
+        const id = card.getAttribute('data-check-id');
         checkedState[id] = !checkedState[id];
         localStorage.setItem(STORAGE_KEY, JSON.stringify(checkedState));
         updateProgress();
