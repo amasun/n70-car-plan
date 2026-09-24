@@ -1,0 +1,1561 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>小米澎程N70 · 选定购车支付执行路线与全周期实战手册</title>
+  <meta name="description" content="小米澎程N70选定购车支付执行路线、资金配比、还款结清推演、现场直出临牌方案、提车全项验车避坑与汽车置换补贴申请全流程手册。" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  
+  <!-- Mermaid.js for flowcharts -->
+  <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+
+  <style>
+    :root {
+      --font-sans: "DM Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+      --font-mono: "JetBrains Mono", "DM Mono", monospace;
+      
+      /* Dark Theme Tokens (Default) */
+      --bg: #090d16;
+      --bg-elevated: #0f172a;
+      --bg-card: rgba(17, 24, 39, 0.75);
+      --bg-card-hover: rgba(30, 41, 59, 0.85);
+      --border: rgba(255, 255, 255, 0.08);
+      --border-highlight: rgba(255, 255, 255, 0.16);
+      
+      --text-main: #f8fafc;
+      --text-muted: #94a3b8;
+      --text-faint: #64748b;
+      
+      --primary: #ff6900;
+      --primary-glow: rgba(255, 105, 0, 0.25);
+      --cyan: #06b6d4;
+      --cyan-glow: rgba(6, 182, 212, 0.2);
+      --emerald: #10b981;
+      --emerald-glow: rgba(16, 185, 129, 0.2);
+      --rose: #f43f5e;
+      --amber: #f59e0b;
+      --indigo: #6366f1;
+      
+      --radius-sm: 8px;
+      --radius-md: 14px;
+      --radius-lg: 20px;
+      --radius-xl: 28px;
+      
+      --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.2);
+      --shadow-md: 0 8px 30px rgba(0, 0, 0, 0.35);
+      --shadow-glow: 0 0 35px var(--primary-glow);
+    }
+
+    [data-theme="light"] {
+      --bg: #f8fafc;
+      --bg-elevated: #ffffff;
+      --bg-card: rgba(255, 255, 255, 0.88);
+      --bg-card-hover: #ffffff;
+      --border: rgba(15, 23, 42, 0.08);
+      --border-highlight: rgba(15, 23, 42, 0.15);
+      
+      --text-main: #0f172a;
+      --text-muted: #475569;
+      --text-faint: #94a3b8;
+      
+      --primary: #f95d00;
+      --primary-glow: rgba(249, 93, 0, 0.15);
+      --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.04);
+      --shadow-md: 0 8px 30px rgba(15, 23, 42, 0.08);
+      --shadow-glow: 0 0 35px var(--primary-glow);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      font-size: 16px;
+    }
+
+    body {
+      font-family: var(--font-sans);
+      background-color: var(--bg);
+      color: var(--text-main);
+      line-height: 1.7;
+      background-image: 
+        radial-gradient(circle at 15% 15%, rgba(255, 105, 0, 0.04) 0%, transparent 45%),
+        radial-gradient(circle at 85% 65%, rgba(6, 182, 212, 0.04) 0%, transparent 45%);
+      background-attachment: fixed;
+      transition: background-color 0.3s ease, color 0.3s ease;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* Container */
+    .container {
+      max-width: 1040px;
+      margin: 0 auto;
+      padding: 30px 20px 100px;
+    }
+
+    /* Header Nav */
+    .top-bar {
+      position: sticky;
+      top: 16px;
+      z-index: 100;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: var(--bg-card);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 10px 18px;
+      box-shadow: var(--shadow-sm);
+      margin-bottom: 32px;
+      transition: all 0.2s ease;
+    }
+
+    .brand-pill {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 700;
+      font-size: 0.95rem;
+      color: var(--text-main);
+      text-decoration: none;
+    }
+
+    .brand-badge {
+      background: linear-gradient(135deg, var(--primary), #ea580c);
+      color: #fff;
+      font-size: 0.75rem;
+      padding: 3px 8px;
+      border-radius: 6px;
+      font-weight: 800;
+      letter-spacing: 0.5px;
+    }
+
+    .actions-group {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .btn-action {
+      background: var(--bg-elevated);
+      color: var(--text-muted);
+      border: 1px solid var(--border);
+      padding: 7px 12px;
+      border-radius: var(--radius-sm);
+      font-size: 0.85rem;
+      font-weight: 500;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.2s ease;
+      text-decoration: none;
+    }
+
+    .btn-action:hover {
+      color: var(--text-main);
+      border-color: var(--border-highlight);
+      transform: translateY(-1px);
+    }
+
+    .btn-action.active {
+      background: var(--primary);
+      color: #ffffff;
+      border-color: var(--primary);
+    }
+
+    /* Quick TOC Bar */
+    .toc-scroll {
+      display: flex;
+      gap: 8px;
+      overflow-x: auto;
+      padding-bottom: 8px;
+      margin-bottom: 32px;
+      scrollbar-width: none;
+    }
+    .toc-scroll::-webkit-scrollbar {
+      display: none;
+    }
+
+    .toc-chip {
+      white-space: nowrap;
+      padding: 6px 14px;
+      border-radius: 20px;
+      font-size: 0.82rem;
+      font-weight: 600;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      color: var(--text-muted);
+      text-decoration: none;
+      transition: all 0.2s;
+    }
+
+    .toc-chip:hover {
+      color: var(--text-main);
+      border-color: var(--primary);
+      background: var(--bg-card-hover);
+    }
+
+    /* Hero Header */
+    .hero-section {
+      text-align: left;
+      padding: 24px 0 36px;
+    }
+
+    .hero-meta-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(255, 105, 0, 0.12);
+      border: 1px solid rgba(255, 105, 0, 0.3);
+      color: var(--primary);
+      font-weight: 700;
+      font-size: 0.8rem;
+      padding: 4px 12px;
+      border-radius: 20px;
+      margin-bottom: 16px;
+    }
+
+    .hero-title {
+      font-size: 2.2rem;
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      line-height: 1.25;
+      margin-bottom: 16px;
+      background: linear-gradient(135deg, var(--text-main) 60%, var(--text-muted) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .hero-quote-box {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-left: 4px solid var(--primary);
+      border-radius: 0 var(--radius-md) var(--radius-md) 0;
+      padding: 16px 20px;
+      margin-bottom: 32px;
+      font-size: 0.95rem;
+      color: var(--text-muted);
+    }
+
+    .hero-quote-box strong {
+      color: var(--text-main);
+    }
+
+    /* KPI Grid */
+    .kpi-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+      gap: 16px;
+      margin-bottom: 40px;
+    }
+
+    .kpi-card {
+      background: var(--bg-card);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      padding: 18px 20px;
+      position: relative;
+      overflow: hidden;
+      transition: all 0.25s ease;
+    }
+
+    .kpi-card:hover {
+      transform: translateY(-2px);
+      border-color: var(--border-highlight);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .kpi-label {
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      color: var(--text-faint);
+      margin-bottom: 6px;
+      font-weight: 600;
+    }
+
+    .kpi-val {
+      font-family: var(--font-mono);
+      font-size: 1.65rem;
+      font-weight: 700;
+      color: var(--text-main);
+      margin-bottom: 4px;
+      line-height: 1.2;
+    }
+
+    .kpi-desc {
+      font-size: 0.82rem;
+      color: var(--text-muted);
+    }
+
+    .kpi-accent-orange .kpi-val { color: var(--primary); }
+    .kpi-accent-cyan .kpi-val { color: var(--cyan); }
+    .kpi-accent-emerald .kpi-val { color: var(--emerald); }
+    .kpi-accent-amber .kpi-val { color: var(--amber); }
+
+    /* Sections */
+    .section-block {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-xl);
+      padding: 32px 36px;
+      margin-bottom: 36px;
+      box-shadow: var(--shadow-sm);
+      position: relative;
+    }
+
+    @media (max-width: 640px) {
+      .section-block {
+        padding: 22px 18px;
+        border-radius: var(--radius-lg);
+      }
+      .hero-title {
+        font-size: 1.7rem;
+      }
+    }
+
+    .section-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 24px;
+      padding-bottom: 16px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .section-title {
+      font-size: 1.35rem;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      color: var(--text-main);
+    }
+
+    .section-number {
+      font-family: var(--font-mono);
+      font-size: 0.85rem;
+      background: var(--primary-glow);
+      color: var(--primary);
+      padding: 3px 8px;
+      border-radius: 6px;
+      border: 1px solid var(--primary);
+    }
+
+    h3 {
+      font-size: 1.1rem;
+      font-weight: 700;
+      margin: 28px 0 14px;
+      color: var(--text-main);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    h3::before {
+      content: "";
+      display: inline-block;
+      width: 4px;
+      height: 16px;
+      background: var(--primary);
+      border-radius: 2px;
+    }
+
+    p, li {
+      color: var(--text-muted);
+      margin-bottom: 12px;
+    }
+
+    ul, ol {
+      padding-left: 20px;
+      margin-bottom: 16px;
+    }
+
+    li {
+      margin-bottom: 8px;
+    }
+
+    strong {
+      color: var(--text-main);
+      font-weight: 600;
+    }
+
+    /* Tables */
+    .table-container {
+      width: 100%;
+      overflow-x: auto;
+      margin: 20px 0;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      background: var(--bg-elevated);
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.88rem;
+      text-align: left;
+    }
+
+    th {
+      background: rgba(255, 255, 255, 0.04);
+      padding: 12px 16px;
+      font-weight: 700;
+      color: var(--text-main);
+      border-bottom: 1px solid var(--border);
+      white-space: nowrap;
+    }
+
+    td {
+      padding: 14px 16px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+      color: var(--text-muted);
+    }
+
+    tr:last-child td {
+      border-bottom: none;
+    }
+
+    tr:hover td {
+      background: rgba(255, 255, 255, 0.02);
+    }
+
+    /* Mermaid Wrapper */
+    .mermaid-box {
+      background: var(--bg-elevated);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      padding: 24px;
+      margin: 20px 0;
+      overflow-x: auto;
+      text-align: center;
+    }
+
+    .mermaid svg {
+      max-width: 100% !important;
+      height: auto !important;
+    }
+
+    /* Interactive Checklist */
+    .checklist-progress-bar {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      background: var(--bg-elevated);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      padding: 14px 20px;
+      margin-bottom: 24px;
+    }
+
+    .progress-track {
+      flex: 1;
+      height: 8px;
+      background: var(--border);
+      border-radius: 4px;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .progress-fill {
+      height: 100%;
+      background: linear-gradient(90deg, var(--primary), var(--emerald));
+      width: 0%;
+      transition: width 0.3s ease;
+      border-radius: 4px;
+    }
+
+    .progress-text {
+      font-family: var(--font-mono);
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--text-main);
+      white-space: nowrap;
+    }
+
+    .checklist-table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    .check-row {
+      cursor: pointer;
+      user-select: none;
+      transition: background 0.15s ease;
+    }
+
+    .check-row:hover td {
+      background: rgba(255, 105, 0, 0.05);
+    }
+
+    .check-row.checked td {
+      background: rgba(16, 185, 129, 0.06);
+    }
+
+    .check-row.checked .check-item-title {
+      text-decoration: line-through;
+      color: var(--text-faint);
+    }
+
+    .custom-checkbox {
+      width: 22px;
+      height: 22px;
+      border-radius: 6px;
+      border: 2px solid var(--border-highlight);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.2s ease;
+      background: transparent;
+      margin: 0 auto;
+    }
+
+    .check-row.checked .custom-checkbox {
+      background: var(--emerald);
+      border-color: var(--emerald);
+      color: #ffffff;
+    }
+
+    .custom-checkbox svg {
+      opacity: 0;
+      transform: scale(0.5);
+      transition: all 0.15s ease;
+    }
+
+    .check-row.checked .custom-checkbox svg {
+      opacity: 1;
+      transform: scale(1);
+    }
+
+    /* Alerts */
+    .alert-card {
+      border-radius: var(--radius-md);
+      padding: 16px 20px;
+      margin: 20px 0;
+      font-size: 0.92rem;
+      display: flex;
+      gap: 14px;
+      align-items: flex-start;
+      border: 1px solid transparent;
+    }
+
+    .alert-card.info {
+      background: rgba(6, 182, 212, 0.08);
+      border-color: rgba(6, 182, 212, 0.25);
+      color: var(--text-muted);
+    }
+
+    .alert-card.warning {
+      background: rgba(245, 158, 11, 0.08);
+      border-color: rgba(245, 158, 11, 0.25);
+      color: var(--text-muted);
+    }
+
+    .alert-card.danger {
+      background: rgba(244, 63, 94, 0.08);
+      border-color: rgba(244, 63, 94, 0.25);
+      color: var(--text-muted);
+    }
+
+    .alert-card.success {
+      background: rgba(16, 185, 129, 0.08);
+      border-color: rgba(16, 185, 129, 0.25);
+      color: var(--text-muted);
+    }
+
+    .alert-icon {
+      font-size: 1.2rem;
+      line-height: 1;
+      margin-top: 2px;
+    }
+
+    /* Tag Pills */
+    .tag {
+      display: inline-block;
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 0.76rem;
+      font-weight: 600;
+      font-family: var(--font-mono);
+      margin: 2px 0;
+    }
+
+    .tag-green { background: rgba(16, 185, 129, 0.15); color: #34d399; }
+    .tag-blue { background: rgba(6, 182, 212, 0.15); color: #38bdf8; }
+    .tag-amber { background: rgba(245, 158, 11, 0.15); color: #fbbf24; }
+    .tag-orange { background: rgba(255, 105, 0, 0.15); color: #fb923c; }
+
+    /* Footer */
+    footer {
+      text-align: center;
+      padding: 40px 0 20px;
+      color: var(--text-faint);
+      font-size: 0.85rem;
+      border-top: 1px solid var(--border);
+      margin-top: 60px;
+    }
+
+    /* Print Styles */
+    @media print {
+      body {
+        background: #ffffff !important;
+        color: #000000 !important;
+      }
+      .top-bar, .toc-scroll, .actions-group, .btn-action {
+        display: none !important;
+      }
+      .section-block {
+        box-shadow: none !important;
+        border: 1px solid #ccc !important;
+        page-break-inside: avoid;
+        margin-bottom: 20px !important;
+        padding: 16px !important;
+      }
+      .table-container {
+        border-color: #ddd !important;
+      }
+      th, td {
+        color: #000000 !important;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+
+    <!-- Top Sticky Bar -->
+    <header class="top-bar">
+      <a href="#" class="brand-pill">
+        <span class="brand-badge">XIAOMI</span>
+        <span>澎程 N70 购车财务与支付规划</span>
+      </a>
+      <div class="actions-group">
+        <button class="btn-action" id="themeToggleBtn" title="切换暗黑/浅色模式">
+          <span id="themeIcon">☀️</span> <span id="themeText">模式</span>
+        </button>
+        <button class="btn-action" onclick="window.print()" title="打印或保存为PDF">
+          🖨️ <span>打印/PDF</span>
+        </button>
+        <a href="https://github.com/amasun/n70-car-plan" target="_blank" rel="noreferrer" class="btn-action" title="在 GitHub 查看">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+          <span>GitHub</span>
+        </a>
+      </div>
+    </header>
+
+    <!-- Quick Navigation Chips -->
+    <nav class="toc-scroll">
+      <a href="#section-1" class="toc-chip">① 资金出资配比</a>
+      <a href="#section-2" class="toc-chip">② 逐月还款推演</a>
+      <a href="#section-3" class="toc-chip">③ 落地必核清单</a>
+      <a href="#section-4" class="toc-chip">④ 提车验车检查表</a>
+      <a href="#section-5" class="toc-chip">⑤ 9.30提车上牌方案</a>
+      <a href="#section-6" class="toc-chip">⑥ 置换补贴申报</a>
+      <a href="#section-7" class="toc-chip">⑦ 小米特色验车细节</a>
+    </nav>
+
+    <!-- Hero Header -->
+    <section class="hero-section">
+      <div class="hero-meta-badge">
+        <span>● 2026.09.30 提车交付专用</span>
+        <span>|</span>
+        <span>指标人：阴学斌</span>
+      </div>
+      <h1 class="hero-title">小米澎程N70 选定购车支付执行路线</h1>
+      
+      <div class="hero-quote-box">
+        <div><strong>车辆标的</strong>：小米澎程N70（售价：<strong>¥233,900</strong>）</div>
+        <div><strong>提车时间</strong>：2026 年 9 月 30 日</div>
+        <div><strong>核心路线</strong>：<strong>首付 50% + 银行信用贷（36期等额本息，年化 3.0% 单利）+ 2027 年 2 月年终奖全额结清</strong></div>
+      </div>
+
+      <!-- KPI Grid -->
+      <div class="kpi-grid">
+        <div class="kpi-card kpi-accent-orange">
+          <div class="kpi-label">车辆销售总价</div>
+          <div class="kpi-val">¥233,900</div>
+          <div class="kpi-desc">小米澎程N70 裸车全额售价</div>
+        </div>
+
+        <div class="kpi-card kpi-accent-cyan">
+          <div class="kpi-label">银行信用贷本金</div>
+          <div class="kpi-val">¥117,000</div>
+          <div class="kpi-desc">36期等额本息 · 年化 3.0% 单利</div>
+        </div>
+
+        <div class="kpi-card kpi-accent-emerald">
+          <div class="kpi-label">提前结清利息代价</div>
+          <div class="kpi-val">¥1,385</div>
+          <div class="kpi-desc">次年2月结清 · 仅1385元换安全垫</div>
+        </div>
+
+        <div class="kpi-card kpi-accent-amber">
+          <div class="kpi-label">置换补贴综合回血</div>
+          <div class="kpi-val">+¥18,000~20k</div>
+          <div class="kpi-desc">北京以旧换新1.5万+小米置换礼遇</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 1: 资金出资配比 -->
+    <section class="section-block" id="section-1">
+      <div class="section-header">
+        <h2 class="section-title">
+          <span class="section-number">01</span>
+          资金出资配比
+        </h2>
+      </div>
+
+      <ul>
+        <li>
+          <strong>自有资金出资（约 ¥13.5 万元）</strong>：
+          <ul>
+            <li>裸车首付 50%：<strong>¥116,900</strong>（按 11.7 万元借款对齐）</li>
+            <li>落地税费保险预留：<strong>约 ¥18,500</strong>（首年保险 ~7500 + 2026新能源减半购置税 ~10,350 + 上牌代办 ~600）</li>
+            <li><em>支付后账面仍留存约 <strong>¥15.0 万元</strong> 现金，稳居 13.3 万元家庭 6 个月应急红线之上。</em></li>
+          </ul>
+        </li>
+        <li>
+          <strong>银行个人信用贷（¥11.7 万元）</strong>：
+          <ul>
+            <li>年化利率：<strong>3.0% 单利</strong></li>
+            <li>签约期限：<strong>36 期等额本息</strong></li>
+            <li>标准月供：<strong>¥3,402.64 元</strong>（月薪结余轻松覆盖，不影响每月 ¥8,000 指数定投）</li>
+          </ul>
+        </li>
+      </ul>
+
+      <div class="alert-card info">
+        <span class="alert-icon">💡</span>
+        <div>
+          <strong>流动性策略亮点</strong>：采用银行信用贷而非主机厂车贷，资金直入个人储蓄卡后全款刷给交付中心，实现<strong>“大绿本自持无抵押、不产生任何金融服务费”</strong>，且提车后账面仍留存 15 万元现金防范未知风险。
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 2: 逐月执行路线图 -->
+    <section class="section-block" id="section-2">
+      <div class="section-header">
+        <h2 class="section-title">
+          <span class="section-number">02</span>
+          逐月执行路线图（2026.09 ~ 2027.02）
+        </h2>
+      </div>
+
+      <h3>阶段执行与资金全景图</h3>
+      
+      <div class="mermaid-box">
+        <pre class="mermaid">
+flowchart LR
+    T0["<b>T0 · 09.30 交付</b><br>──────────────<br>借款 11.7万 · 付全款<br>大绿本自持无抵押<br><b>本金：¥117,000</b>"]
+    
+    T1["<b>T1 · 2026.10</b><br>──────────────<br>月供 <b>¥3,403</b><br>月薪正常覆盖<br><b>本金：¥113,890</b>"]
+
+    T2["<b>T2 · 2026.11</b><br>──────────────<br>月供 <b>¥3,403</b><br>公积金到账 <b>+2.58万</b><br><b>本金：¥110,772</b>"]
+
+    T3["<b>T3 · 2026.12</b><br>──────────────<br>月供 <b>¥3,403</b><br>月薪覆盖 · 定投照常<br><b>本金：¥107,646</b>"]
+
+    T4["<b>T4 · 2027.01</b><br>──────────────<br>月供 <b>¥3,403</b><br>月薪覆盖 · 资金蓄水<br><b>本金：¥104,513</b>"]
+
+    T5["<b>T5 · 2027.02 结清</b><br>──────────────<br>年终奖到账 · 一键还清<br>总利息仅 <b>¥1,385</b><br><b>本金：¥0 (结清)</b>"]
+
+    T0 --> T1 --> T2 --> T3 --> T4 --> T5
+
+    style T0 fill:#1e293b,stroke:#06b6d4,stroke-width:2px,color:#fff
+    style T1 fill:#0f172a,stroke:#475569,stroke-width:1px,color:#fff
+    style T2 fill:#0f172a,stroke:#475569,stroke-width:1px,color:#fff
+    style T3 fill:#0f172a,stroke:#475569,stroke-width:1px,color:#fff
+    style T4 fill:#0f172a,stroke:#475569,stroke-width:1px,color:#fff
+    style T5 fill:#1e293b,stroke:#10b981,stroke-width:2.5px,color:#fff
+        </pre>
+      </div>
+
+      <h3>还款与结清现金流明细表</h3>
+      <div class="table-container">
+        <table>
+          <thead>
+            <tr>
+              <th>阶段 / 时间</th>
+              <th>核心动作与资金流</th>
+              <th>月供明细 (本金+利息)</th>
+              <th>剩余本金</th>
+              <th>进度</th>
+              <th>现金流状态说明</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>T0：2026-09-30</strong></td>
+              <td><strong>提款与提车交付</strong><br>• 银行到账 ¥117,000<br>• 结清全款与落地税险（自有资金净出资约 13.5 万）</td>
+              <td>——</td>
+              <td>¥117,000.00</td>
+              <td><span class="tag tag-blue">0.0%</span></td>
+              <td>对小米而言为<strong>纯全款客户</strong>，无任何金融杂费，大绿本直接归自己自持。</td>
+            </tr>
+            <tr>
+              <td><strong>T1：2026-10</strong></td>
+              <td><strong>第 1 期月供扣款</strong></td>
+              <td><strong>¥3,402.64</strong><br>(本 3,110.14 + 息 292.50)</td>
+              <td>¥113,889.86</td>
+              <td><span class="tag tag-blue">2.7%</span></td>
+              <td>正常月薪结余覆盖，开始首期还款。</td>
+            </tr>
+            <tr>
+              <td><strong>T2：2026-11</strong></td>
+              <td><strong>第 2 期月供扣款</strong></td>
+              <td><strong>¥3,402.64</strong><br>(本 3,117.92 + 息 284.72)</td>
+              <td>¥110,771.94</td>
+              <td><span class="tag tag-blue">5.3%</span></td>
+              <td>当月季度公积金到账（+¥25,782），现金池大幅回血净增，还款完全无感。</td>
+            </tr>
+            <tr>
+              <td><strong>T3：2026-12</strong></td>
+              <td><strong>第 3 期月供扣款</strong></td>
+              <td><strong>¥3,402.64</strong><br>(本 3,125.71 + 息 276.93)</td>
+              <td>¥107,646.23</td>
+              <td><span class="tag tag-blue">8.0%</span></td>
+              <td>税后月薪盈余覆盖，每月 ¥8,000 指数基金定投照常扣划。</td>
+            </tr>
+            <tr>
+              <td><strong>T4：2027-01</strong></td>
+              <td><strong>第 4 期月供扣款</strong></td>
+              <td><strong>¥3,402.64</strong><br>(本 3,133.52 + 息 269.12)</td>
+              <td>¥104,512.71</td>
+              <td><span class="tag tag-blue">10.7%</span></td>
+              <td>正常月薪结余覆盖，资金稳步累积，静待次月年终奖发放。</td>
+            </tr>
+            <tr style="background: rgba(16, 185, 129, 0.08);">
+              <td><strong>T5：2027-02</strong></td>
+              <td><strong>全额提前结清</strong><br>• 结清当期利息 ¥261.28<br>• 一键还清剩余本金 <strong>¥104,512.71</strong></td>
+              <td><strong>¥104,773.99</strong><br>(本 104,512.71 + 息 261.28)</td>
+              <td><strong>¥0.00</strong><br><em>(彻底结清)</em></td>
+              <td><span class="tag tag-green">100% 结清</span></td>
+              <td><strong>4个月年终奖（15~18万）+ 公积金（2.58万）集中到账</strong>，手机银行 App 申请提前还款，一次性无损结清。</td>
+            </tr>
+            <tr style="font-weight: 700; background: rgba(255, 105, 0, 0.08);">
+              <td>全周期汇总</td>
+              <td>实际总支出：¥118,384.55</td>
+              <td>总利息支出：¥1,384.55</td>
+              <td>借款总本金：¥117,000.00</td>
+              <td><span class="tag tag-orange">年化 3.0%</span></td>
+              <td><strong>仅花 1,385 元利息代价，换取了全家 5 个月极其充裕的现金安全垫与流动性自由。</strong></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- Section 3: 落地实操必核清单 -->
+    <section class="section-block" id="section-3">
+      <div class="section-header">
+        <h2 class="section-title">
+          <span class="section-number">03</span>
+          落地实操必核清单
+        </h2>
+      </div>
+
+      <h3>1. 银行端（提款前确认）</h3>
+      <ol>
+        <li><strong>核对提前还款规则</strong>：确认合同必须注明 <strong>“支持随时提前结清、无违约金/补偿金、利息按日或按实际期数结算”</strong>。</li>
+        <li><strong>核对利率形式</strong>：确认年化利率为 <strong>单利 3.0%</strong>（非手续费分期）。</li>
+        <li><strong>放款方式</strong>：选 <strong>自主支付</strong>（资金直接打入个人借记卡）。</li>
+      </ol>
+
+      <h3>2. 小米交付端（提车日）</h3>
+      <ol>
+        <li><strong>身份界定</strong>：向交付顾问明确是 <strong>“纯全款购车”</strong>，刷自己的银行借记卡。</li>
+        <li><strong>费用底线</strong>：<strong>不支付</strong> 任何金融服务费、公证费、出库费或上牌代办高额溢价。</li>
+        <li><strong>收件核查</strong>：
+          <ul>
+            <li><strong>机动车登记证书（大绿本）</strong>：原件自己带走，确认上面没有任何抵押登记字样。</li>
+            <li><strong>机动车销售发票</strong>：保存好发票电子版（以备银行消费贷贷后抽查）。</li>
+          </ul>
+        </li>
+      </ol>
+    </section>
+
+    <!-- Section 4: 提车实操验车检验清单 (Interactive Checklist) -->
+    <section class="section-block" id="section-4">
+      <div class="section-header">
+        <h2 class="section-title">
+          <span class="section-number">04</span>
+          提车实操验车检验清单（交互打勾）
+        </h2>
+        <button class="btn-action" id="resetChecklistBtn" style="font-size: 0.78rem;">重置勾选</button>
+      </div>
+
+      <!-- Real-time Progress Bar -->
+      <div class="checklist-progress-bar">
+        <div class="progress-track">
+          <div class="progress-fill" id="checklistProgressFill"></div>
+        </div>
+        <div class="progress-text" id="checklistProgressText">已核验 0 / 19 项 (0%)</div>
+      </div>
+
+      <h3>1. 证件与随车附件核查（法律与权属）</h3>
+      <div class="table-container">
+        <table class="checklist-table">
+          <thead>
+            <tr>
+              <th style="width: 150px;">检验类目</th>
+              <th>核验要点与标准</th>
+              <th style="width: 70px; text-align: center;">核验</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="check-row" data-check-id="c1">
+              <td><span class="check-item-title">三码一致性</span></td>
+              <td>核对<strong>车辆合格证</strong>、<strong>车架铭牌（B柱）</strong>、<strong>挡风玻璃左下角 VIN 码</strong>与<strong>销售发票</strong>上的车架号完全一致。</td>
+              <td style="text-align: center;">
+                <div class="custom-checkbox">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                </div>
+              </td>
+            </tr>
+            <tr class="check-row" data-check-id="c2">
+              <td><span class="check-item-title">票证完整性</span></td>
+              <td>机动车销售统一发票（发票联/报税联/注册登记联）、车辆一致性证书、环保清单、三包凭证。</td>
+              <td style="text-align: center;">
+                <div class="custom-checkbox">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                </div>
+              </td>
+            </tr>
+            <tr class="check-row" data-check-id="c3">
+              <td><span class="check-item-title">钥匙与配对</span></td>
+              <td>实体遥控钥匙 2 把、NFC 卡片钥匙 2 张、手机 App 蓝牙数字钥匙激活配对正常。</td>
+              <td style="text-align: center;">
+                <div class="custom-checkbox">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                </div>
+              </td>
+            </tr>
+            <tr class="check-row" data-check-id="c4">
+              <td><span class="check-item-title">随车应急工具</span></td>
+              <td>三角警示牌、反光背心、随车充气泵/补胎液、牵引钩、便携式放电设备（如有赠送/选配）。</td>
+              <td style="text-align: center;">
+                <div class="custom-checkbox">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                </div>
+              </td>
+            </tr>
+            <tr class="check-row" data-check-id="c5">
+              <td><span class="check-item-title">临时牌照</span></td>
+              <td>临牌信息核对（车架号、车主姓名），确认临牌在有效期限内（建议至少覆盖 15 天以上）。</td>
+              <td style="text-align: center;">
+                <div class="custom-checkbox">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3>2. 车身外观与装配工艺（顺光/逆光仔细排查）</h3>
+      <div class="table-container">
+        <table class="checklist-table">
+          <thead>
+            <tr>
+              <th style="width: 150px;">检验类目</th>
+              <th>核验要点与标准</th>
+              <th style="width: 70px; text-align: center;">核验</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="check-row" data-check-id="c6">
+              <td><span class="check-item-title">全车漆面</span></td>
+              <td>车辆必须停放在<strong>光线充足处</strong>或车间灯阵下；顺光与逆光观察前后杠、侧裙、四门折角是否有橘皮、色差、划痕、小凹坑或后补漆痕迹（可使用或要求交付顾问提供漆膜仪测厚，正常在 100~150μm 且分布均匀）。</td>
+              <td style="text-align: center;">
+                <div class="custom-checkbox">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                </div>
+              </td>
+            </tr>
+            <tr class="check-row" data-check-id="c7">
+              <td><span class="check-item-title">装配接缝</span></td>
+              <td>机舱盖两侧接缝、尾厢盖左右接缝、四门门缝对称度，缝隙公差应均匀一致，无肉眼可见的高低差或左右明显宽窄不一。</td>
+              <td style="text-align: center;">
+                <div class="custom-checkbox">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                </div>
+              </td>
+            </tr>
+            <tr class="check-row" data-check-id="c8">
+              <td><span class="check-item-title">全车玻璃</span></td>
+              <td>检查挡风玻璃、侧窗、全景天幕玻璃标识右下角的生产年月（圆点+数字），出厂月份应早于或接近整车出厂日期，玻璃表面无砂眼与划痕。</td>
+              <td style="text-align: center;">
+                <div class="custom-checkbox">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                </div>
+              </td>
+            </tr>
+            <tr class="check-row" data-check-id="c9">
+              <td><span class="check-item-title">轮胎与轮毂</span></td>
+              <td>四个轮毂边缘无运车蹭伤；核对轮胎品牌规格与选配一致；查验轮胎生产批次 DOT 代码（如 3226 代表 2026 年第 32 周）；检查四轮原始胎毛是否完好，胎压显示是否正常（冷态约 2.6~2.9 bar）。</td>
+              <td style="text-align: center;">
+                <div class="custom-checkbox">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3>3. 座舱内饰与机械电气功能</h3>
+      <div class="table-container">
+        <table class="checklist-table">
+          <thead>
+            <tr>
+              <th style="width: 150px;">检验类目</th>
+              <th>核验要点与标准</th>
+              <th style="width: 70px; text-align: center;">核验</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="check-row" data-check-id="c10">
+              <td><span class="check-item-title">座椅与皮革面料</span></td>
+              <td>真皮/翻毛皮座椅表面无折痕磨损、污渍或开线；主副驾电动调节、座椅通风、座椅加热、按摩功能逐项测试有效。</td>
+              <td style="text-align: center;">
+                <div class="custom-checkbox"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg></div>
+              </td>
+            </tr>
+            <tr class="check-row" data-check-id="c11">
+              <td><span class="check-item-title">车机与仪表屏</span></td>
+              <td>中控大屏、仪表屏、HUD 抬头显示表面无划痕；在纯白/纯黑壁纸下检查屏幕是否有坏点、亮点、漏光；触控响应流畅无卡顿。</td>
+              <td style="text-align: center;">
+                <div class="custom-checkbox"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg></div>
+              </td>
+            </tr>
+            <tr class="check-row" data-check-id="c12">
+              <td><span class="check-item-title">车窗与遮阳机构</span></td>
+              <td>四门车窗一键升降顺畅无异响、防夹手功能有效；全景天幕电动遮阳帘（如有）开合顺畅平整。</td>
+              <td style="text-align: center;">
+                <div class="custom-checkbox"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg></div>
+              </td>
+            </tr>
+            <tr class="check-row" data-check-id="c13">
+              <td><span class="check-item-title">空调与照明</span></td>
+              <td>空调冷风/热风制热制冷迅速，出风口扫风与分区温控正常，车内无异味；前后大灯、日行灯、刹车灯、车内氛围灯全功能点亮测试。</td>
+              <td style="text-align: center;">
+                <div class="custom-checkbox"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg></div>
+              </td>
+            </tr>
+            <tr class="check-row" data-check-id="c14">
+              <td><span class="check-item-title">储物与电动尾厢</span></td>
+              <td>手套箱、扶手箱开关阻尼正常；前后备箱电动开关、脚踢感应/按键闭锁测试顺畅无异响。</td>
+              <td style="text-align: center;">
+                <div class="custom-checkbox"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg></div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3>4. 三电核心与网联功能（纯电专属）</h3>
+      <div class="table-container">
+        <table class="checklist-table">
+          <thead>
+            <tr>
+              <th style="width: 150px;">检验类目</th>
+              <th>核验要点与标准</th>
+              <th style="width: 70px; text-align: center;">核验</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="check-row" data-check-id="c15">
+              <td><span class="check-item-title">出厂日期与里程</span></td>
+              <td>查验 B 柱车辆铭牌，出厂日期距交付日应在 <strong>3 个月内</strong>（严防超长库存车）；仪表初始总行驶里程应在 <strong>10 ~ 50 km 内</strong>（过高需查问转运原因）。</td>
+              <td style="text-align: center;">
+                <div class="custom-checkbox"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg></div>
+              </td>
+            </tr>
+            <tr class="check-row" data-check-id="c16">
+              <td><span class="check-item-title">电池电量状态</span></td>
+              <td>交付时动力电池电量（SoC）建议在 <strong>60% 以上</strong>；车机健康度自检无任何三电故障报警代码。</td>
+              <td style="text-align: center;">
+                <div class="custom-checkbox"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg></div>
+              </td>
+            </tr>
+            <tr class="check-row" data-check-id="c17">
+              <td><span class="check-item-title">快慢充口机构</span></td>
+              <td>手动/电动按键打开快充口与慢充口，盖板阻尼正常，充电口针脚平直无氧化烧蚀痕迹。</td>
+              <td style="text-align: center;">
+                <div class="custom-checkbox"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg></div>
+              </td>
+            </tr>
+            <tr class="check-row" data-check-id="c18">
+              <td><span class="check-item-title">车主绑定与网联</span></td>
+              <td>现场完成车主账号登录与人车绑定，测试车载 5G 信号、车载 GPS 定位、手机 App 远程解锁/控温功能畅通。</td>
+              <td style="text-align: center;">
+                <div class="custom-checkbox"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg></div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3>5. 交付签署避坑铁律</h3>
+      <div class="alert-card danger">
+        <span class="alert-icon">🚫</span>
+        <div>
+          <strong>1. 瑕疵未定，严禁签字</strong>：在外观、功能全项确认无误前，<strong>严禁签署任何《车辆交付确认单》</strong>，<strong>严禁在手机 App 上点击“确认交付”</strong>。
+        </div>
+      </div>
+      <div class="alert-card warning">
+        <span class="alert-icon">📝</span>
+        <div>
+          <strong>2. 问题书面留痕与工单锁定</strong>：现场若发现任何划痕、色差或装配缝隙问题，必须由交付专员在交付纸质单据上<strong>手写签字记录</strong>，并在厂家系统内正式提报售后工单。
+        </div>
+      </div>
+      <div class="alert-card info">
+        <span class="alert-icon">🎁</span>
+        <div>
+          <strong>3. 争取合理补偿与修复方案</strong>：细微瑕疵若无需返修拒收，应视情况索要官方商城积分、官方原厂配件（如脚垫、遮阳帘）或赠送免费常规保养券作为补偿后再行提车。
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 5: 9月30日 提车与上牌方案 -->
+    <section class="section-block" id="section-5">
+      <div class="section-header">
+        <h2 class="section-title">
+          <span class="section-number">05</span>
+          9月30日 提车与上牌方案（双轨决策）
+        </h2>
+      </div>
+
+      <h3>1. 核心逻辑重构：现场直出临牌，解锁“假期畅开+错峰上牌”自由</h3>
+      <ul>
+        <li><strong>客观事实明确</strong>：小米汽车交付中心现场已设交管便民终端，<strong>提车当天现场直接打印核发官方纸质临时行驶号牌（通常有效期 15 ~ 30 天）</strong>。</li>
+        <li><strong>破除时间绑架</strong>：车辆贴上临牌并生效交强险后，即<strong>已获得 100% 完整的合法上路权</strong>（支持北京市内通行与跨省长途自驾）。“9月30日当天必须赶在车管所关门前上牌”不再是刚性生死时速。</li>
+      </ul>
+
+      <div class="table-container">
+        <table>
+          <thead>
+            <tr>
+              <th style="width: 220px;">决策路径</th>
+              <th>执行节奏</th>
+              <th style="width: 130px;">耗时评估</th>
+              <th>优劣势与适配场景</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr style="background: rgba(16, 185, 129, 0.08);">
+              <td><strong>路线 A<br><span class="tag tag-green">强烈推荐</span><br>节前领临牌 · 节后从容上牌</strong></td>
+              <td>9月30日上午在小米完成验车、付款、出险、<strong>现场领取并粘贴临牌</strong> ➔ 中午直接开新车回北京人家 ➔ 国庆 7 天凭临牌畅快用车 ➔ <strong>国庆节后（10月8日后）任意工作日半天完成验车上牌</strong>。</td>
+              <td>全程约 <strong>3.5 小时</strong><br><em>(08:00~11:30)</em></td>
+              <td><strong>最优解</strong>：彻底避开 9月30日国庆前夕车管所排队洪峰与提前截流风险；提车轻松惬意，假期出行零耽误。</td>
+            </tr>
+            <tr>
+              <td><strong>路线 B<br><span class="tag tag-amber">进取备选</span><br>同日冲刺上牌 · 临牌零风险兜底</strong></td>
+              <td>上午提车并领取临牌 ➔ 挂临牌合法自驾赴京北车管所冲刺正式号牌 ➔ 办完领大绿本回家；<strong>若遇车管所排队拥堵，随时持临牌无损撤退回家过节</strong>。</td>
+              <td>全程约 <strong>9.5 小时</strong><br><em>(08:00~17:30)</em></td>
+              <td><strong>有底线保障</strong>：即便车管所当天因人多未能办结，因手里已握有交付中心核发的有效临牌，<strong>无任何滞留和无牌上路风险</strong>。</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3>2. 权属与代办核心前置确认（9月29日前必须落实）</h3>
+      <div class="alert-card warning">
+        <span class="alert-icon">⚠️</span>
+        <div>
+          <strong>指标人与发票抬头铁律</strong>：实际出资买主为你本人，但<strong>指标人（法定车主）为阴学斌</strong>。机动车销售统一发票购买方、交强险被保险人、购置税申报人<strong>必须统一登记为“阴学斌”</strong>，严禁使用代办人姓名，否则车管所系统无法核销配置指标。
+        </div>
+      </div>
+
+      <ul>
+        <li>
+          <strong>到场与委托授权（二选一）</strong>：
+          <ul>
+            <li><strong>方案 A（最优）</strong>：阴学斌本人持身份证原件一同前往交付中心（及车管所），免去所有代办核验环节。</li>
+            <li><strong>方案 B（代办）</strong>：若阴学斌无法到场，<strong>必须提前在“交管12123”App完成电子委托</strong>（路径：<code>便民服务</code> ➔ <code>业务委托申请</code> ➔ <code>机动车业务 / 注册登记</code> ➔ 填写代办人身份证信息并人脸核验），提车当天代办人携带<strong>双方身份证原件</strong>及纸质委托书。</li>
+          </ul>
+        </li>
+        <li>
+          <strong>预约锁定</strong>：
+          <ul>
+            <li>路线 A：仅需锁定小米交付中心 <strong>08:30</strong> 提车批次。</li>
+            <li>路线 B：需同时锁定小米交付中心 <strong>08:30</strong> 批次 + 预约京北车管所 <strong>13:30 ~ 14:30</strong> 新车查验号段。</li>
+          </ul>
+        </li>
+      </ul>
+
+      <h3>3. 路线 B 执行推演表（若选择 9月30日 当日冲刺上牌）</h3>
+      <div class="table-container">
+        <table>
+          <thead>
+            <tr>
+              <th style="width: 140px;">时间节点</th>
+              <th style="width: 90px;">预估时长</th>
+              <th style="width: 160px;">阶段 / 动作</th>
+              <th style="width: 180px;">地点与路线</th>
+              <th>核心任务与避坑要点</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>08:00 - 08:30</strong></td>
+              <td>0.5 小时</td>
+              <td>出发转场</td>
+              <td>北京人家 ➔ 小米交付中心<br><em>(~15 km, 25分钟)</em></td>
+              <td>携带资料包：双方身份证原件、指标确认通知书打印件、银行卡、手机充电宝。</td>
+            </tr>
+            <tr>
+              <td><strong>08:30 - 10:00</strong></td>
+              <td>1.5 小时</td>
+              <td>提车实测与核验</td>
+              <td>小米昌平未来科技园交付中心</td>
+              <td>1. 严格对照第四部分清单排查漆面、玻璃批次与三电功能。<br>2. 刷借记卡付清车款尾款 ¥228,900 与现场保费约 ¥7,500（家庭自有资金实际净出资约 13.5 万）。</td>
+            </tr>
+            <tr>
+              <td><strong>10:00 - 11:00</strong></td>
+              <td>1.0 小时</td>
+              <td>开票、出险与直出临牌</td>
+              <td>小米交付中心业务大厅</td>
+              <td>1. 现场开具发票（购买方：阴学斌）。<br>2. 激活交强险保单（确认当天即刻生效）。<br>3. <strong>现场直接核发纸质临牌并粘贴前后风挡（此时已具备完整合法路权）</strong>。<br>4. 税务系统完成购置税免税申报。</td>
+            </tr>
+            <tr>
+              <td><strong>11:00 - 12:00</strong></td>
+              <td>1.0 小时</td>
+              <td>跨区转场与简餐</td>
+              <td>未来科技园 ➔ 京北车管所<br><em>(~28 km, 40分钟)</em></td>
+              <td><strong>挂临牌合法自驾通行</strong>，直达昌平马池口北方检测场/京北车管所，中途快速解决简餐。</td>
+            </tr>
+            <tr>
+              <td><strong>12:00 - 13:00</strong></td>
+              <td>1.0 小时</td>
+              <td>查验排队与就位</td>
+              <td>昌平区京北车管所查验区入口</td>
+              <td>排入新车查验通道。<em>观察现场排队车辆数量，若排队已超 50 台，可就地决定是否改走路线 A 直接撤退返程。</em></td>
+            </tr>
+            <tr>
+              <td><strong>13:00 - 14:30</strong></td>
+              <td>1.5 小时</td>
+              <td>外检拓号与查验</td>
+              <td>京北车管所查验线</td>
+              <td>验车员核对车辆识别代号（拓印车架号）、拍照、核验轮胎规格与三角反光背心，生成查验密封袋。</td>
+            </tr>
+            <tr>
+              <td><strong>14:30 - 15:30</strong></td>
+              <td>1.0 小时</td>
+              <td>业务受理与选号</td>
+              <td>京北车管所业务大厅</td>
+              <td>窗口提交指标书、发票、合格证、保单、代办委托与双方证件，现场选号确认。</td>
+            </tr>
+            <tr>
+              <td><strong>15:30 - 16:30</strong></td>
+              <td>1.0 小时</td>
+              <td>制证与归档</td>
+              <td>业务大厅收费与发证窗口</td>
+              <td>缴纳工本费约 120 元，现场领取<strong>机动车行驶证</strong>、<strong>机动车登记证书（大绿本）</strong>及检验合格标志，办理正式号牌邮寄。</td>
+            </tr>
+            <tr>
+              <td><strong>16:30 - 17:30</strong></td>
+              <td>1.0 小时</td>
+              <td>合规自驾归家</td>
+              <td>京北车管所 ➔ 北京人家<br><em>(~22 km, 35分钟)</em></td>
+              <td>手续全齐大绿本在手，满载返程。</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="alert-card danger">
+        <span class="alert-icon">🛑</span>
+        <div>
+          <strong>止损撤退机制</strong>：若执行路线 B，下午 13:30 发现车管所外检线出现排队严重拥堵（预估排队超 2 小时）或交管网络卡顿，<strong>切勿硬耗至傍晚</strong>。应当机立断驾车离开返回北京人家，启动路线 A 节后再办，把大好假期留给家人！
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 6: 汽车置换更新补贴申请全流程 -->
+    <section class="section-block" id="section-6">
+      <div class="section-header">
+        <h2 class="section-title">
+          <span class="section-number">06</span>
+          汽车置换更新补贴申请全流程
+        </h2>
+      </div>
+
+      <h3>1. 补贴类型与资金收益预估</h3>
+      <div class="table-container">
+        <table>
+          <thead>
+            <tr>
+              <th>补贴类别</th>
+              <th>申报主体 / 平台</th>
+              <th>预估补贴金额</th>
+              <th>发放形式</th>
+              <th>核心享受条件</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>北京市汽车以旧换新补贴</strong><br><em>(汽车置换更新补贴)</em></td>
+              <td>北京市商务局<br>“京通”小程序 / 汽车置换申报系统</td>
+              <td><strong style="color: var(--emerald);">¥15,000 元</strong><br><em>(新能源乘用车标准)</em></td>
+              <td>现金直达银行卡<br><em>(打入阴学斌名下账户)</em></td>
+              <td>转出在北京市登记的个人名下旧乘用车，并在北京购买新能源新乘用车。</td>
+            </tr>
+            <tr>
+              <td><strong>小米汽车官方置换礼遇</strong></td>
+              <td>小米汽车 App / 交付中心</td>
+              <td><strong>约 ¥3,000 ~ 5,000 元</strong><br><em>(以当季交付政策为准)</em></td>
+              <td>官方商城积分 / 保险补贴 / 选装基金</td>
+              <td>通过小米汽车官方置换渠道或提报外部二手车处置证明。</td>
+            </tr>
+            <tr style="background: rgba(16, 185, 129, 0.08); font-weight: 700;">
+              <td>置换合计综合收益</td>
+              <td>政企联动双重回血</td>
+              <td>约 ¥18,000 ~ 20,000 元</td>
+              <td>综合资金回收</td>
+              <td><strong>可直接覆盖全周期借款利息（¥1,385），并净增现金流超 1.6 万元。</strong></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3>2. 资格与资料红线（必须严格同名同人）</h3>
+      <div class="alert-card warning">
+        <span class="alert-icon">⚠️</span>
+        <div>
+          <strong>“四合一”同名铁律</strong>：<br>
+          • <strong>旧车原所有人</strong> = <strong>阴学斌</strong><br>
+          • <strong>新车发票购买方</strong> = <strong>阴学斌</strong><br>
+          • <strong>新车行驶证及大绿本车主</strong> = <strong>阴学斌</strong><br>
+          • <strong>接收补贴的银行借记卡（I类卡）账户名</strong> = <strong>阴学斌</strong>
+        </div>
+      </div>
+
+      <p><strong>必备材料清单</strong>：</p>
+      <ol>
+        <li>阴学斌身份证正反面原件照片。</li>
+        <li>旧车《二手车销售统一发票》（买方可为二手车商或个人，卖方必须为阴学斌）。</li>
+        <li>旧车原《机动车登记证书》（含本次转让转移登记信息的对应签章页）。</li>
+        <li>新车《机动车销售统一发票》（发票联彩色原件照片）。</li>
+        <li>新车《机动车行驶证》（主页与副页正反面彩色照片）。</li>
+        <li>新车《机动车登记证书》（第 1 页与第 2 页，登记所有人必须为阴学斌且无抵押）。</li>
+        <li>阴学斌名下 I 类银行借记卡（需明确开户行及支行名称）。</li>
+      </ol>
+
+      <h3>3. 申报步骤与实操路径</h3>
+      <div class="mermaid-box">
+        <pre class="mermaid">
+flowchart LR
+    S1["<b>步骤 1：旧车过户</b><br>──────────────<br>取得二手车销售发票<br>大绿本完成转让变更"]
+    
+    S2["<b>步骤 2：新车上牌</b><br>──────────────<br>9月30日完成交付<br>领取行驶证与大绿本"]
+
+    S3["<b>步骤 3：线上申报</b><br>──────────────<br>微信搜索京通小程序<br>进入汽车置换更新系统"]
+
+    S4["<b>步骤 4：上传材料</b><br>──────────────<br>录入阴学斌证件银行卡<br>上传新旧车双套票证"]
+
+    S5["<b>步骤 5：审核打款</b><br>──────────────<br>商务局审核与公示<br><b>补贴 1.5万 直发到卡</b>"]
+
+    S1 --> S2 --> S3 --> S4 --> S5
+
+    style S1 fill:#0f172a,stroke:#475569,stroke-width:1px,color:#fff
+    style S2 fill:#0f172a,stroke:#475569,stroke-width:1px,color:#fff
+    style S3 fill:#0f172a,stroke:#06b6d4,stroke-width:1.5px,color:#fff
+    style S4 fill:#0f172a,stroke:#475569,stroke-width:1px,color:#fff
+    style S5 fill:#1e293b,stroke:#10b981,stroke-width:2.5px,color:#fff
+        </pre>
+      </div>
+
+      <p><strong>实操路径</strong>：</p>
+      <ol>
+        <li>手机打开微信或支付宝，搜索进入 <strong>“京通” 小程序</strong>。</li>
+        <li>搜索栏输入并进入 <strong>“汽车置换更新补贴”</strong>（或进入市商务局以旧换新专区）。</li>
+        <li>身份验证：由<strong>阴学斌本人进行人脸识别验证登录</strong>（或使用阴学斌实名认证的微销/支付宝登录操作）。</li>
+        <li>依次录入申请人基本信息、旧车转出凭证与新车上牌发票证件照片。</li>
+        <li>确认无误后点击“提交申请”。</li>
+        <li>进度跟踪：约 5~10 个工作日初审，复核及公示通过后，通常在 <strong>15 ~ 30 个工作日内</strong> 资金由财政直达银行账户。</li>
+      </ol>
+    </section>
+
+    <!-- Section 7: 小米汽车特色验车细节与车主实战避坑经验 -->
+    <section class="section-block" id="section-7">
+      <div class="section-header">
+        <h2 class="section-title">
+          <span class="section-number">07</span>
+          小米汽车特色验车细节与避坑经验
+        </h2>
+      </div>
+
+      <h3>1. 漆面与钣金公差特有通病（车友圈高频反馈）</h3>
+      <ul>
+        <li>
+          <strong>前后杠与金属车身反光色差</strong>：
+          <ul>
+            <li><em>现象</em>：前后保险杠为工程塑料材质，车身侧面为金属材质。在昏暗展厅中，金属漆（如雅灰、海湾蓝）可能呈现微弱折射色差。</li>
+            <li><em>排查方法</em>：<strong>切勿在昏暗展厅内验收</strong>。务必将车辆开至室外开阔日光下或强光灯阵下，后退 3~5 米从 45 度侧角观察前后杠拼接处反光一致性。</li>
+          </ul>
+        </li>
+        <li>
+          <strong>前机舱盖左右接缝与高低公差</strong>：
+          <ul>
+            <li><em>现场快修方案</em>：机舱盖底面配有<strong>可旋转螺纹橡胶限位胶墩</strong>。现场发现高低差时，<strong>直接要求驻场售后技师微调胶墩螺纹</strong>，通常 3~5 分钟即可完全找平，无需返厂。</li>
+          </ul>
+        </li>
+        <li>
+          <strong>轮毂装卸与运输暗伤</strong>：
+          <ul>
+            <li><em>排查方法</em>：验车时不仅用肉眼看，更要<strong>用手指顺着 4 个轮毂外边缘滑摸一圈</strong>，排查有无运输绑带卡扣造成的毛刺、磕碰凹坑。</li>
+          </ul>
+        </li>
+      </ul>
+
+      <h3>2. 无框车门与隔音密封细节</h3>
+      <ul>
+        <li><strong>无框车窗短升降动作</strong>：拉开外门把手瞬间车窗应瞬间微降 1~1.5 cm；关门后玻璃须迅速向上顶紧切入密封胶条。</li>
+        <li><strong>双模车门开关逻辑测试</strong>：逐一测试车外微动按键、车内电子轻触开关，以及门板储物槽下方的<strong>机械应急拉手</strong>是否能正常物理拉动开门（核心逃生冗余）。</li>
+      </ul>
+
+      <h3>3. 小米澎湃 OS 与双人用车账号绑定（核心重点）</h3>
+      <div class="alert-card info">
+        <span class="alert-icon">📱</span>
+        <div>
+          <strong>双人账号打通三步法</strong>：
+          <br>1. <strong>主车主账号绑定（阴学斌）</strong>：车机首发激活与 App 主管理员必须登录阴学斌的小米账号（手机号）完成人脸识别与车辆认证。
+          <br>2. <strong>现场完成亲友权限授权与主驾绑定</strong>：阴学斌端 App 点击：<code>车辆管理</code> ➔ <code>亲友钥匙 / 车辆共享</code> ➔ 输入<strong>你本人的手机号与小米账号</strong>，授权赋予“全部控制权限”。你本人手机端绑定蓝牙与 UWB 钥匙、面部识别录入与座椅记忆。<strong>当场测试远程空调与控车！</strong>
+          <br>3. <strong>测试实体卡片与无线充</strong>：B柱刷 NFC 卡片测试，手机放中控 50W 风冷充测试散热降噪出风。
+        </div>
+      </div>
+
+      <h3>4. 提车前电量准备与随车配件</h3>
+      <ul>
+        <li><strong>提前 1 天锁定交付电量</strong>：务必在提车前一日（9月29日）在交付群向交付专员明确要求：<strong>“提车时请协助将动力电池慢充至 85% ~ 90% 以上”</strong>，避免出场即找桩或排队耗尽。</li>
+        <li><strong>车载螺纹扩展接口排查</strong>：中控大屏四周螺纹扩展孔拆下硅胶塞检查内螺纹是否规整无滑丝。</li>
+        <li><strong>家用充电桩服务卡包</strong>：确认 App 账户收到赠送的 7kW/11kW 家充桩权益兑换卡。</li>
+      </ul>
+
+      <h3>5. 现场微小瑕疵的“合理维权与积分补偿”潜规则</h3>
+      <div class="alert-card success">
+        <span class="alert-icon">🎁</span>
+        <div>
+          <strong>合理索赔心理预期</strong>：根据全国车友圈实战经验，若发现轻微抛光可去除的发丝纹或轻微瑕疵，要求交付专员在纸质《交付单》手写签字留痕，通常可向上申请 <strong>5,000 ~ 20,000 小米商城积分（等值 ¥500 ~ 2,000 元，可换原厂脚垫、天幕遮阳帘等）</strong>或直接赠送原厂周边。<br>
+          <strong>最终防线</strong>：在全部瑕疵处理或补偿方案书面落地前，<strong>手机 App 坚决不点最终确认交付</strong>！
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+      <p>小米澎程N70 选定购车支付执行路线 · 交付现场实战手册</p>
+      <p style="margin-top: 6px;">
+        <a href="README.md" style="color: var(--primary); text-decoration: none;">查看原始 Markdown 文档</a> · 
+        <a href="https://github.com/amasun/n70-car-plan" target="_blank" rel="noreferrer" style="color: var(--primary); text-decoration: none;">GitHub 仓库源码</a>
+      </p>
+    </footer>
+
+  </div>
+
+  <script>
+    // Initialize Mermaid
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'default',
+      securityLevel: 'loose',
+      fontFamily: 'DM Sans, PingFang SC, sans-serif'
+    });
+
+    // Theme Toggle
+    const themeToggleBtn = document.getElementById('themeToggleBtn');
+    const themeIcon = document.getElementById('themeIcon');
+    const themeText = document.getElementById('themeText');
+
+    function setTheme(theme) {
+      document.documentElement.setAttribute('data-theme', theme);
+      localStorage.setItem('n70_theme', theme);
+      if (theme === 'light') {
+        themeIcon.textContent = '🌙';
+        themeText.textContent = '暗黑';
+      } else {
+        themeIcon.textContent = '☀️';
+        themeText.textContent = '浅色';
+      }
+    }
+
+    const savedTheme = localStorage.getItem('n70_theme') || 'dark';
+    setTheme(savedTheme);
+
+    themeToggleBtn.addEventListener('click', () => {
+      const current = document.documentElement.getAttribute('data-theme');
+      setTheme(current === 'dark' ? 'light' : 'dark');
+    });
+
+    // Interactive Checklist Logic with LocalStorage
+    const checkRows = document.querySelectorAll('.check-row');
+    const progressFill = document.getElementById('checklistProgressFill');
+    const progressText = document.getElementById('checklistProgressText');
+    const resetBtn = document.getElementById('resetChecklistBtn');
+    const STORAGE_KEY = 'n70_checklist_state';
+
+    let checkedState = {};
+    try {
+      checkedState = JSON.parse(localStorage.getItem(STORAGE_KEY) || '{}');
+    } catch(e) {
+      checkedState = {};
+    }
+
+    function updateProgress() {
+      const total = checkRows.length;
+      let checkedCount = 0;
+      checkRows.forEach(row => {
+        const id = row.getAttribute('data-check-id');
+        if (checkedState[id]) {
+          row.classList.add('checked');
+          checkedCount++;
+        } else {
+          row.classList.remove('checked');
+        }
+      });
+
+      const pct = Math.round((checkedCount / total) * 100);
+      progressFill.style.width = pct + '%';
+      progressText.textContent = `已核验 ${checkedCount} / ${total} 项 (${pct}%)`;
+      if (checkedCount === total && total > 0) {
+        progressText.innerHTML = `🎉 全部 ${total} 项核验完成！可安心交车`;
+        progressFill.style.background = 'linear-gradient(90deg, #10b981, #06b6d4)';
+      }
+    }
+
+    checkRows.forEach(row => {
+      row.addEventListener('click', () => {
+        const id = row.getAttribute('data-check-id');
+        checkedState[id] = !checkedState[id];
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(checkedState));
+        updateProgress();
+      });
+    });
+
+    resetBtn.addEventListener('click', () => {
+      if (confirm('确定要清空所有已勾选的验车检验状态吗？')) {
+        checkedState = {};
+        localStorage.removeItem(STORAGE_KEY);
+        updateProgress();
+      }
+    });
+
+    // Initialize progress on load
+    updateProgress();
+  </script>
+</body>
+</html>
