@@ -2301,10 +2301,6 @@
       <span class="dock-btn-icon">🧭</span>
       <span>章节导航</span>
     </button>
-    <button type="button" class="dock-btn" id="dockThemeBtn" title="切换深浅主题">
-      <span class="dock-btn-icon" id="dockThemeIcon">☀️</span>
-      <span>模式</span>
-    </button>
     <button type="button" class="dock-btn" onclick="window.scrollTo({top: 0, behavior: 'smooth'})" title="返回顶部">
       <span class="dock-btn-icon">🔝</span>
       <span>回顶部</span>
@@ -2333,9 +2329,7 @@
   <script>
     // Theme Toggle
     const themeToggleBtn = document.getElementById('themeToggleBtn');
-    const dockThemeBtn = document.getElementById('dockThemeBtn');
     const themeIcon = document.getElementById('themeIcon');
-    const dockThemeIcon = document.getElementById('dockThemeIcon');
     const themeText = document.getElementById('themeText');
 
     function setTheme(theme) {
@@ -2343,7 +2337,6 @@
       localStorage.setItem('n70_theme', theme);
       const isLight = theme === 'light';
       themeIcon.textContent = isLight ? '🌙' : '☀️';
-      dockThemeIcon.textContent = isLight ? '🌙' : '☀️';
       themeText.textContent = isLight ? '暗黑' : '浅色';
     }
 
@@ -2356,7 +2349,6 @@
     }
 
     themeToggleBtn.addEventListener('click', toggleTheme);
-    dockThemeBtn.addEventListener('click', toggleTheme);
 
     // Mobile Drawer Navigation
     const openDrawerBtn = document.getElementById('openDrawerBtn');
